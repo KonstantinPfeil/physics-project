@@ -10,7 +10,7 @@ magnetData = pd.DataFrame(file, columns=["locationHeadingZ", "locationHeadingTim
 # gebrauchte colums entnehmen
 start = magnetData[0][1]  # start timestamp lesen
 magnetData = [(x, y - start) for x, y in magnetData]  # Datenvereinfachen
-positive = False
+positive = False  # startet mit Negativenmagneten
 for x, (value, time) in enumerate(magnetData):
     if x + 5 < len(magnetData):
         nextValues = [magnetData[i][0] for i in range(x + 1, x + 5)]  # vorherige und nachkommende Elemente in der Liste
