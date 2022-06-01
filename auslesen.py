@@ -20,7 +20,7 @@ for x, (value, time) in enumerate(magnetData):
             times.append(time)  # hinzufügen der Zeit
             positive = not positive # umkehren des Vorzeichen
 
-with open(input("path: "), "w") as f:
+with open("mtimes.txt", "w") as f:
     f.write(
         json.dumps(dict(times=times), indent=4)
     )
