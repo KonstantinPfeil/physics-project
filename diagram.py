@@ -28,7 +28,6 @@ speeds.insert(0, 0.2/firstTime)
 accelerations.insert(0, None)# dummy data
 accelerations.insert(0, None)
 accelerations.insert(0, None)
-""" Adding zero points"""
 
 
 plt.plot(times, weg)
