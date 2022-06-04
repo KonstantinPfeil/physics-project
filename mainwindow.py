@@ -30,7 +30,7 @@ class MainWindow(Base, Form):
         if calculation is not None:
             t, s, v, a = calculation
             # ta = [(t, a) for t, a in zip(t, a) if a is not None]
-            self.c = QChartView(self)   # todo in QTEditor QChartView statt den blauen Boen
+            self.c = QChartView(self)   # todo in QTEditor QChartView statt den blauen Boxen
             self.c.resize(400, 300)
             self.c.setRenderHint(QPainter.Antialiasing)
             self.c.setChart(Chart(
