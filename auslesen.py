@@ -1,5 +1,6 @@
 import pandas as pd
 import json
+import os
 
 
 def readFromFile(path: str):
@@ -19,7 +20,7 @@ def readFromFile(path: str):
                 times.append(time)  # hinzufügen der Zeit
                 positive = not positive # umkehren des Vorzeichen
 
-    with open("mtimes.txt", "w") as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt"), "w") as f:
         f.write(
             json.dumps(dict(times=times), indent=4)
         )

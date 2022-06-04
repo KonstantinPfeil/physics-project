@@ -10,7 +10,6 @@ import sys
 from PySide6.QtUiTools import loadUiType
 from PySide6 import QtCore as Core
 from PySide6 import QtWidgets
-from PySide6.QtWidgets import QWidget
 from PySide6.QtCharts import QChartView, QChart, QSplineSeries
 from PySide6.QtGui import QPainter
 from PySide6.QtCore import QPointF
@@ -30,32 +29,33 @@ class MainWindow(Base, Form):
         calculation = calculate()
         if calculation is not None:
             t, s, v, a = calculation
-            ta = [(t, a) for t, a in zip(t, a) if a is not None]
-            self.c = Chart([zip(t, s), zip(t, v), ta], self)
+            # ta = [(t, a) for t, a in zip(t, a) if a is not None]
+            self.c = QChartView(self)   # todo in QTEditor QChartView statt den blauen Boen
+            self.c.resize(400, 300)
+            self.c.setRenderHint(QPainter.Antialiasing)
+            self.c.setChart(Chart(
+                [("t-s", zip(t, s)), ("t-v", zip(t, v)), ("t-a", zip(t, a))],
+                "Test"
+            ))
             self.c.show()
 
 
-def setData(chart, data: []):
-    series = QSplineSeries(chart)
-    for x, y in data:
-        series << QPointF(x, y)
-    chart.addSeries(series)
-
-
-class Chart(QChartView):
-    def __init__(self, datas: [list], parent=None):
-        super(Chart, self).__init__(parent)
-
-        self.resize(400, 300)
-        self.setRenderHint(QPainter.Antialiasing)
-
-        chart = QChart()
-        self.setChart(chart)
-        chart.setTitle('Simple splinechart example')
+class Chart(QChart):
+    def __init__(self, datas, title: str):
+        super(Chart, self).__init__()
+        self.setTitle(title)
         for data in datas:
-            setData(chart, data)
-        chart.createDefaultAxes()
-        chart.legend().setVisible(False)
+            self.set(data)
+        self.createDefaultAxes()
+        self.legend().setVisible(True)
+
+    def set(self, data: []):
+        series = QSplineSeries(self)
+        name, data = data
+        for x, y in data:
+            series << QPointF(x, y)
+        series.setName(name)
+        self.addSeries(series)
 
 
 if __name__ == "__main__":

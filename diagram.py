@@ -1,3 +1,4 @@
+import os
 import json
 import matplotlib.pyplot as plt
 import numpy as np
@@ -5,10 +6,10 @@ import numpy as np
 
 def calculate():
     try:
-        with open("mtimes.txt") as f:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
             times = json.loads(f.read())["times"]  # read times from file
     except FileNotFoundError:
-        print("no mtimes.txt file")
+        print("no mtimes.txt file \n try auslesen.py")
         return None
 
     weg = [x * 0.20 for x in range(len(times) + 1)]
@@ -21,7 +22,7 @@ def calculate():
     accelerations = [v / t for v, t in zip(speedDifferences, timeDifferences[1:])]
     meanAcceleration = sum(accelerations) / len(accelerations)
 
-    firstTime = np.sqrt(0.4 / meanAcceleration)
+    firstTime = np.sqrt(0.4 / accelerations[0])
     times.insert(0, firstTime)
     times = [t - times[0] for t in times]
 
@@ -30,9 +31,9 @@ def calculate():
     speeds.insert(0, 0.2 / timeDifferences[0])  # first and second speed
     speeds.insert(0, 0.2 / firstTime)
 
-    accelerations.insert(0, None)  # dummy data
-    accelerations.insert(0, None)
-    accelerations.insert(0, None)
+    accelerations.insert(0, meanAcceleration)  # dummy data
+    accelerations.insert(0, meanAcceleration)
+    accelerations.insert(0, meanAcceleration)
     return times, weg, speeds, accelerations
 
 
