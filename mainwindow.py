@@ -13,6 +13,7 @@ from PySide6 import QtWidgets
 from PySide6.QtCharts import QChartView, QChart, QSplineSeries
 from PySide6.QtGui import QPainter
 from PySide6.QtCore import QPointF
+from PySide6.QtWidgets import QFileDialog
 
 from diagram import calculate
 from auslesen import readFromFile
@@ -22,15 +23,33 @@ ProjectDir = os.path.dirname(os.path.abspath(__file__))
 Form, Base = loadUiType(os.path.join(ProjectDir, UIFilename))
 
 
+def openFile():
+    path = QFileDialog.getOpenFileName()
+    try:
+        readFromFile(path)
+
+    except Exception as e:
+        print(e)
+        print("wrong file")
+
+
 class MainWindow(Base, Form):
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
+        self.c = None
         self.setupUi(self)
+        try:
+            self.setDiagrams()
+        except FileNotFoundError:
+            pass
+        # todo self.File_option_name.triggered.connect(openFile)
+
+    def setDiagrams(self):
         calculation = calculate()
         if calculation is not None:
             t, s, v, a = calculation
             # ta = [(t, a) for t, a in zip(t, a) if a is not None]
-            self.c = QChartView(self)   # todo in QTEditor QChartView statt den blauen Boxen
+            self.c = QChartView(self)  # todo in QTEditor QChartView statt den blauen Boxen
             self.c.resize(400, 300)
             self.c.setRenderHint(QPainter.Antialiasing)
             self.c.setChart(Chart(
