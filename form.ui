@@ -41,7 +41,7 @@ border-radius: 10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(10, 42, 81);
+     <string notr="true">background-color: rgb(38, 41, 46);
 border-radius: 10px;</string>
     </property>
    </widget>
@@ -55,7 +55,7 @@ border-radius: 10px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(10, 42, 81);
+     <string notr="true">background-color: rgb(38, 41, 46);
 border-radius: 10px;</string>
     </property>
    </widget>
