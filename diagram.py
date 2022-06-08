@@ -28,7 +28,7 @@ def calculate():
     speedDifferences.insert(0, times[1] - times[0])  # create new difference with new time
 
     speeds.insert(0, 0.2 / timeDifferences[0])  # first and second speed
-    speeds.insert(0, 0.2 / firstTime)
+    speeds.insert(0, 0)  # zero point
 
     accelerations.insert(0, meanAcceleration)  # dummy data
     accelerations.insert(0, meanAcceleration)
