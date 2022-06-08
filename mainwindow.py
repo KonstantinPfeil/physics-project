@@ -10,8 +10,8 @@ import sys
 from PySide6.QtUiTools import loadUiType
 from PySide6 import QtCore as Core
 from PySide6 import QtWidgets
-from PySide6.QtCharts import QChartView, QChart, QScatterSeries, QSplineSeries
-from PySide6.QtGui import QPainter
+from PySide6.QtCharts import QChart, QScatterSeries, QSplineSeries
+from PySide6.QtGui import QPainter, QShortcut, QKeySequence
 from PySide6.QtCore import QPointF
 from PySide6.QtWidgets import QFileDialog
 
@@ -32,7 +32,9 @@ class MainWindow(Base, Form):
             self.setDiagrams()
         except FileNotFoundError:
             pass
-        self.actionOpen.triggered.connect(self.openFile)
+        self.actionOpen.triggered.connect(self.openFile)  # option file open
+        self.openSC = QShortcut(QKeySequence("Ctrl+o"), self)  # shortcut open file
+        self.openSC.activated.connect(self.openFile)
 
     def setDiagrams(self):
         calculation = calculate()

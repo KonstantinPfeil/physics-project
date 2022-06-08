@@ -9,7 +9,6 @@ def readFromFile(path: str):
         file = pd.read_excel(path)  # Daten  aus Datei lesen
     else:
         file = pd.read_csv(path, header=0, sep=";")
-        print(file)
     magnetData = pd.DataFrame(file, columns=["locationHeadingZ", "locationHeadingTimestamp_since1970"]).to_numpy()
     # gebrauchte colums entnehmen
     start = magnetData[0][1]  # start timestamp lesen
