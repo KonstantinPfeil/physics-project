@@ -24,10 +24,9 @@ Form, Base = loadUiType(os.path.join(ProjectDir, UIFilename))
 
 
 def openFile():
-    path = QFileDialog.getOpenFileName()
+    path, i = QFileDialog.getOpenFileName()
     try:
         readFromFile(path)
-
     except Exception as e:
         print(e)
         print("wrong file")
@@ -42,7 +41,7 @@ class MainWindow(Base, Form):
             self.setDiagrams()
         except FileNotFoundError:
             pass
-        # todo self.File_option_name.triggered.connect(openFile)
+        self.actionOpen.triggered.connect(openFile)
 
     def setDiagrams(self):
         calculation = calculate()
@@ -83,7 +82,6 @@ class Chart(QChart):
             series << QPointF(x, y)
         series.setName(name)
         self.addSeries(series)
-
 
 if __name__ == "__main__":
     Core.QCoreApplication.setAttribute(Core.Qt.AA_ShareOpenGLContexts)

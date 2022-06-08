@@ -14,7 +14,6 @@ def readFromFile(path: str):
     for x, (value, time) in enumerate(magnetData):
         if x in range(5, len(magnetData)-5):
             Values = [t for m, t in magnetData[x-5:x+5]]  # vorherige und nachkommende Elemente in der Liste
-            print(Values)
             if positive and value > 500 and value >= max(Values) or \
                     not positive and value < -500 and value <= min(Values):
                 # erkennung von Spitzen
