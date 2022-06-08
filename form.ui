@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:qlineargradient(spread:pad, x1:0.84, y1:1, x2:1, y2:0, stop:0 rgba(38, 41, 46, 200), stop:1 rgba(86, 93, 103, 1));</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QChartView" name="diagramm1" native="true">
     <property name="geometry">
@@ -24,7 +27,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(10, 42, 81);</string>
+     <string notr="true">background-color: rgb(38, 41, 46);
+border-radius: 10px;</string>
     </property>
    </widget>
    <widget class="QChartView" name="diagramm2" native="true">
@@ -37,7 +41,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(10, 42, 81);</string>
+     <string notr="true">background-color: rgb(10, 42, 81);
+border-radius: 10px;</string>
     </property>
    </widget>
    <widget class="QChartView" name="diagramm3" native="true">
@@ -50,7 +55,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(10, 42, 81);</string>
+     <string notr="true">background-color: rgb(10, 42, 81);
+border-radius: 10px;</string>
     </property>
    </widget>
   </widget>
@@ -63,8 +69,27 @@
      <height>24</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionOpen"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QWidget</extends>
+   <header>qchartview.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
