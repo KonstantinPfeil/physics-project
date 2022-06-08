@@ -3,7 +3,6 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
-
 def calculate():
     try:
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:

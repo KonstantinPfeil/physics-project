@@ -9,11 +9,12 @@ def readFromFile(path: str):
     magnetData = pd.DataFrame(file, columns=["locationHeadingZ", "locationHeadingTimestamp_since1970"]).to_numpy()
     # gebrauchte colums entnehmen
     start = magnetData[0][1]  # start timestamp lesen
-    magnetData = [(x, y - start) for x, y in magnetData]  # Datenvereinfachen
+    magnetData = [(m, t - start) for m, t in magnetData]  # Datenvereinfachen
     positive = False  # startet mit Negativenmagneten
     for x, (value, time) in enumerate(magnetData):
         if x in range(5, len(magnetData)-5):
-            Values = magnetData[x-5:x+5][0]  # vorherige und nachkommende Elemente in der Liste
+            Values = [t for m, t in magnetData[x-5:x+5]]  # vorherige und nachkommende Elemente in der Liste
+            print(Values)
             if positive and value > 500 and value >= max(Values) or \
                     not positive and value < -500 and value <= min(Values):
                 # erkennung von Spitzen
