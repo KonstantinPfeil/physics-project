@@ -10,7 +10,7 @@ import sys
 from PySide6.QtUiTools import loadUiType
 from PySide6 import QtCore as Core
 from PySide6 import QtWidgets
-from PySide6.QtCharts import QChart, QScatterSeries, QSplineSeries
+from PySide6.QtCharts import QChart, QScatterSeries, QSplineSeries, QXYSeries
 from PySide6.QtGui import QPainter, QShortcut, QKeySequence
 from PySide6.QtCore import QPointF
 from PySide6.QtWidgets import QFileDialog
@@ -28,12 +28,9 @@ class MainWindow(Base, Form):
         super(self.__class__, self).__init__(parent)
         self.c = None
         self.setupUi(self)
-        try:
-            self.setDiagrams()
-        except FileNotFoundError:
-            pass
+        self.setDiagrams()
         self.actionOpen.triggered.connect(self.openFile)  # option file open
-        self.openSC = QShortcut(QKeySequence("Ctrl+o"), self)  # shortcut open file
+        self.openSC = QShortcut(QKeySequence("Ctrl+o"), self)  # shortcut for fileopen
         self.openSC.activated.connect(self.openFile)
 
     def setDiagrams(self):
@@ -43,24 +40,32 @@ class MainWindow(Base, Form):
             # ta = [(t, a) for t, a in zip(t, a) if a is not None]
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
             self.diagramm1.setChart(Chart(
-                [("t-s", zip(t, s), QScatterSeries)],
+                [ScatterSeries("t-s", zip(t, s))],
                 "t-s"
             ))
             self.diagramm2.setRenderHint(QPainter.Antialiasing)
-            self.diagramm2.setChart(Chart(
-                [("t-v", zip(t, v), QScatterSeries)],
-                "t-v"
-            ))
+            self.diagramm2.setChart(
+                Chart([ScatterSeries("t-v", zip(t, v))], "t-v")
+            )
             self.diagramm3.setRenderHint(QPainter.Antialiasing)
-            self.diagramm3.setChart(Chart(
-                [("t-a", zip(t, a), QScatterSeries), ("mean acceleration", [(0, ma), (8.1, ma)], QSplineSeries)],
-                "t-a"
-            ))
+            self.diagramm3.setChart(
+                Chart(
+                    [
+                        ScatterSeries("t-a", zip(t, a)),
+                        SplineSeries("mean acceleration", [(0, ma), (8.1, ma)])
+                    ],
+                    "t-a"
+                )
+            )
         else:
             print("err")
 
     def openFile(self):
-        path, i = QFileDialog.getOpenFileName()
+        path = QFileDialog.getOpenFileName(
+                                            self,
+                                            "Open Data File exel/csv",
+                                            filter="Tabel Files (*.xlsx *.csv);; All Files (*.*)"
+                                           )[0]
         try:
             readFromFile(path)
         except Exception as e:
@@ -71,22 +76,35 @@ class MainWindow(Base, Form):
 
 
 class Chart(QChart):
-    def __init__(self, datas, title: str):
+    def __init__(self, series, title: str):
         super(Chart, self).__init__()
         self.setTitle(title)
-        for data in datas:
-            self.set(data)
+        for s in series:
+            self.add(s)
         self.createDefaultAxes()
         self.legend().setVisible(True)
 
-    def set(self, data: []):
-        name, data, form = data
-        series = form(self)
-        series.setMarkerSize(5)
+    def add(self, s: QXYSeries):
+        s.setParent(self)
+        self.addSeries(s)
+
+
+class SplineSeries(QSplineSeries):
+    def __init__(self, name, data):
+        super(SplineSeries, self).__init__()
+        self.setMarkerSize(5)
         for x, y in data:
-            series << QPointF(x, y)
-        series.setName(name)
-        self.addSeries(series)
+            self << QPointF(x, y)
+        self.setName(name)
+
+
+class ScatterSeries(QScatterSeries):
+    def __init__(self, name, data):
+        super(ScatterSeries, self).__init__()
+        self.setMarkerSize(5)
+        for x, y in data:
+            self << QPointF(x, y)
+        self.setName(name)
 
 
 if __name__ == "__main__":
