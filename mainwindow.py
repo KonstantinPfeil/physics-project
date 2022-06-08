@@ -23,15 +23,6 @@ ProjectDir = os.path.dirname(os.path.abspath(__file__))
 Form, Base = loadUiType(os.path.join(ProjectDir, UIFilename))
 
 
-def openFile():
-    path, i = QFileDialog.getOpenFileName()
-    try:
-        readFromFile(path)
-    except Exception as e:
-        print(e)
-        print("wrong file")
-
-
 class MainWindow(Base, Form):
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
@@ -41,7 +32,7 @@ class MainWindow(Base, Form):
             self.setDiagrams()
         except FileNotFoundError:
             pass
-        self.actionOpen.triggered.connect(openFile)
+        self.actionOpen.triggered.connect(self.openFile)
 
     def setDiagrams(self):
         calculation = calculate()
@@ -60,9 +51,21 @@ class MainWindow(Base, Form):
             ))
             self.diagramm3.setRenderHint(QPainter.Antialiasing)
             self.diagramm3.setChart(Chart(
-                [("t-a", zip(t, a), QScatterSeries), ("meanaccerlation", [(0, ma), (8.1, ma)], QSplineSeries)],
+                [("t-a", zip(t, a), QScatterSeries), ("mean acceleration", [(0, ma), (8.1, ma)], QSplineSeries)],
                 "t-a"
             ))
+        else:
+            print("err")
+
+    def openFile(self):
+        path, i = QFileDialog.getOpenFileName()
+        try:
+            readFromFile(path)
+        except Exception as e:
+            print(e)
+            print("wrong file")
+            return
+        self.setDiagrams()
 
 
 class Chart(QChart):
@@ -82,6 +85,7 @@ class Chart(QChart):
             series << QPointF(x, y)
         series.setName(name)
         self.addSeries(series)
+
 
 if __name__ == "__main__":
     Core.QCoreApplication.setAttribute(Core.Qt.AA_ShareOpenGLContexts)
