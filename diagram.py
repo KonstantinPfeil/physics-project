@@ -33,13 +33,13 @@ def calculate():
     accelerations.insert(0, meanAcceleration)  # dummy data
     accelerations.insert(0, meanAcceleration)
     accelerations.insert(0, meanAcceleration)
-    return times, weg, speeds, accelerations
+    return times, weg, speeds, accelerations, meanAcceleration
 
 
 if __name__ == "__main__":
     calculation = calculate()
     if calculation is not None:
-        t, s, v, a = calculation
+        t, s, v, a, ma = calculation
         plt.plot(t, s)
         plt.show()
         plt.plot(t, v)
