@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color:qlineargradient(spread:pad, x1:0.84, y1:1, x2:1, y2:0, stop:0 rgba(38, 41, 46, 200), stop:1 rgba(86, 93, 103, 1));</string>
+   <string notr="true">background-color:qlineargradient(spread:pad, x1:0.84, y1:1, x2:1, y2:0, stop:0 rgba(38, 41, 46, 100), stop:1 rgba(86, 93, 103, 1));</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QChartView" name="diagramm1" native="true">
@@ -59,6 +59,32 @@ border-radius: 10px;</string>
 border-radius: 10px;</string>
     </property>
    </widget>
+   <widget class="QLabel" name="lbl_Title">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>1071</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>35</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+color: rgb(187, 178, 233);</string>
+    </property>
+    <property name="text">
+     <string>Auswertung gleichförmige Bewegung</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -80,6 +106,9 @@ border-radius: 10px;</string>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
  </widget>
