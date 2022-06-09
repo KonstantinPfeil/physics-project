@@ -10,6 +10,18 @@
     <height>600</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1066</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1066</width>
+    <height>600</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -63,9 +75,9 @@ border-radius: 10px;</string>
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>20</y>
+      <y>-10</y>
       <width>1071</width>
-      <height>41</height>
+      <height>101</height>
      </rect>
     </property>
     <property name="font">
@@ -95,10 +107,14 @@ color: rgb(187, 178, 233);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: transparent;</string>
+     <string notr="true">background-color: transparent;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Diagramm t-s</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_2">
@@ -111,10 +127,14 @@ color: rgb(187, 178, 233);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: transparent;</string>
+     <string notr="true">background-color: transparent;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Diagramm t-v</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QCheckBox" name="checkBox_3">
@@ -127,10 +147,14 @@ color: rgb(187, 178, 233);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: transparent;</string>
+     <string notr="true">background-color: transparent;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string>Diagramm t-a</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
