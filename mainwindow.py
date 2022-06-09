@@ -10,9 +10,9 @@ import sys
 from PySide6.QtUiTools import loadUiType
 from PySide6 import QtCore as Core
 from PySide6 import QtWidgets
-from PySide6.QtCharts import QChart, QScatterSeries, QSplineSeries, QXYSeries
-from PySide6.QtGui import QPainter, QShortcut, QKeySequence
-from PySide6.QtCore import QPointF
+from PySide6.QtCharts import QChart, QScatterSeries, QSplineSeries, QXYSeries, QValueAxis
+from PySide6.QtGui import QPainter, QShortcut, QKeySequence, QBrush, QColor
+from PySide6.QtCore import QPointF, Qt
 from PySide6.QtWidgets import QFileDialog
 
 from diagram import calculate
@@ -58,14 +58,12 @@ class MainWindow(Base, Form):
                 )
             )
         else:
-            print("err")
+            print("err: No times")
 
     def openFile(self):
-        path = QFileDialog.getOpenFileName(
-                                            self,
-                                            "Open Data File exel/csv",
-                                            filter="Tabel Files (*.xlsx *.csv);; All Files (*.*)"
-                                           )[0]
+        path = QFileDialog. \
+            getOpenFileName(self, "Open Data File exel/csv",
+                            filter="Tabel Files (*.xlsx *.csv);; All Files (*.*)")[0]
         try:
             readFromFile(path)
         except Exception as e:
@@ -76,13 +74,21 @@ class MainWindow(Base, Form):
 
 
 class Chart(QChart):
-    def __init__(self, series, title: str):
+    def __init__(self, series, title: str, maxX: int = 10,  maxY: int = 10):
         super(Chart, self).__init__()
         self.setTitle(title)
         for s in series:
             self.add(s)
-        self.createDefaultAxes()
         self.legend().setVisible(True)
+        self.createDefaultAxes()
+        """ax = QValueAxis(self)
+        ax.setGridLineVisible(False)
+        ax.setRange(0, maxX)
+        self.addAxis(ax, Qt.AlignmentFlag.AlignBottom)
+        ay = QValueAxis(self)
+        ay.setGridLineVisible(False)
+        ay.setRange(0, maxY)
+        self.addAxis(ay, Qt.AlignmentFlag.AlignLeft)"""
 
     def add(self, s: QXYSeries):
         s.setParent(self)
