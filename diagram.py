@@ -23,6 +23,7 @@ def calculate():
     times.insert(0, firstTime)
     times = [t - times[0] for t in times]
     averageSpeed = [meanAcceleration * t for t in times]
+    weg2 = [(meanAcceleration / 2) * t**2 for t in times ]
     speedDifferences.insert(0, times[1] - times[0])  # create new difference with new time
 
     speeds.insert(0, 0.2 / timeDifferences[0])  # first and second speed
@@ -32,31 +33,25 @@ def calculate():
     accelerations.insert(0, meanAcceleration)
     accelerations.insert(0, meanAcceleration)
 
-    return meanAcceleration, averageSpeed, times, weg, speeds, accelerations
+    return weg2, meanAcceleration, averageSpeed, times, weg, speeds, accelerations
 
+def scatter(name: str, x, y, c: str):
+    plt.scatter(x,y, color = c)
+    xname, yname = name.split("-")
+    plt.xlabel(xname)
+    plt.ylabel(yname)
 
 
 if __name__ == "__main__":
     calculation = calculate()
     if calculation is not None:
-        aAverage, vAverage, t, s, v, a = calculation
-        plt.plot(t, s)
-        plt.xlabel("s")
-        plt.ylabel("t")
+        s2, a2, v2, t, s, v, a = calculation
+        scatter("t in s -s in m",t,s, None)
+        scatter(" t in s - s in m", t, s2, "red")
         plt.show()
-        plt.plot(t, v)
-        plt.xlabel("t")
-        plt.ylabel("v")
+        scatter("t-v", t, v, None)
+        scatter("t in s - v2 in m/s", t, v2, "red")
         plt.show()
-        plt.plot(t, a)
-        plt.xlabel("t")
-        plt.ylabel("a")
-        plt.show()
-        plt.plot(t, vAverage)
-        plt.xlabel("t")
-        plt.ylabel("v2")
-        plt.show()
-        plt.plot(t, aAverage)
-        plt.xlabel("t")
-        plt.ylabel("a2")
+        scatter("t in s -a in m/s^2" , t, a, None)
+        scatter("t in s - a2 in m/s^2", t, [a2 for i in t], "red")
         plt.show()
