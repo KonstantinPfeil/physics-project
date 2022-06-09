@@ -26,8 +26,9 @@ def calculate():
     weg2 = [(meanAcceleration / 2) * t**2 for t in times ]
     speedDifferences.insert(0, times[1] - times[0])  # create new difference with new time
 
-    speeds.insert(0, 0.2 / timeDifferences[0])  # first and second speed
+      # first and second speed
     speeds.insert(0, 0.2 / firstTime)
+    speeds.insert(0, 0)  # zero point
 
     accelerations.insert(0, meanAcceleration)  # dummy data
     accelerations.insert(0, meanAcceleration)
@@ -35,8 +36,8 @@ def calculate():
 
     return weg2, meanAcceleration, averageSpeed, times, weg, speeds, accelerations
 
-def scatter(name: str, x, y, c: str):
-    plt.scatter(x,y, color = c)
+def scatter(name: str, x, y, c: str, size: str):
+    plt.scatter(x,y, color = c, s = size)
     xname, yname = name.split("-")
     plt.xlabel(xname)
     plt.ylabel(yname)
@@ -46,12 +47,12 @@ if __name__ == "__main__":
     calculation = calculate()
     if calculation is not None:
         s2, a2, v2, t, s, v, a = calculation
-        scatter("t in s -s in m",t,s, None)
-        scatter(" t in s - s in m", t, s2, "red")
+        scatter("t in s -s in m",t,s, None, None)
+        scatter(" t in s - s in m", t, s2, "red", 5)
         plt.show()
-        scatter("t-v", t, v, None)
-        scatter("t in s - v2 in m/s", t, v2, "red")
+        scatter("t-v", t, v, None, None)
+        scatter("t in s - v2 in m/s", t, v2, "red", 5)
         plt.show()
-        scatter("t in s -a in m/s^2" , t, a, None)
-        scatter("t in s - a2 in m/s^2", t, [a2 for i in t], "red")
+        scatter("t in s -a in m/s^2" , t, a, None, None)
+        scatter("t in s - a2 in m/s^2", t, [a2 for i in t], "red", 5)
         plt.show()
