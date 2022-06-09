@@ -32,6 +32,10 @@ class MainWindow(Base, Form):
         self.actionOpen.triggered.connect(self.openFile)  # option file open
         self.openSC = QShortcut(QKeySequence("Ctrl+o"), self)  # shortcut for fileopen
         self.openSC.activated.connect(self.openFile)
+        # connect Visible of diagrams with the checkboxes
+        self.checkBox_1.stateChanged.connect(lambda: self.diagramm1.setVisible(self.checkBox_1.isChecked()))
+        self.checkBox_2.stateChanged.connect(lambda: self.diagramm2.setVisible(self.checkBox_2.isChecked()))
+        self.checkBox_3.stateChanged.connect(lambda: self.diagramm3.setVisible(self.checkBox_3.isChecked()))
 
     def setDiagrams(self):
         calculation = calculate()

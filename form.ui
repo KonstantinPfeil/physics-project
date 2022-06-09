@@ -97,7 +97,7 @@ color: rgb(187, 178, 233);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QCheckBox" name="checkBox">
+   <widget class="QCheckBox" name="checkBox_1">
     <property name="geometry">
      <rect>
       <x>80</x>
