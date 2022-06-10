@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
+
 def calculate():
     try:
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
@@ -26,7 +27,7 @@ def calculate():
     predictedDistance = [(averageAcceleration / 2) * t**2 for t in times ]
     speedDifferences.insert(0, times[1] - times[0])  # create new difference with new time
 
-      # first and second speed
+    # first and second speed
     speeds.insert(0, 0.2 / firstTime)
     speeds.insert(0, 0)  # zero point
 
@@ -34,11 +35,11 @@ def calculate():
     accelerations.insert(0, averageAcceleration)
     accelerations.insert(0, averageAcceleration)
 
-    return averageSpeed, times, weg, predictedDistance, speeds, accelerations, averageAcceleration,
+    return times, weg, speeds, accelerations, predictedDistance, averageSpeed, averageAcceleration,
 
 
 def scatter(name: str, x, y, c: str = None, size: str = None):
-    plt.scatter(x,y, color = c, s = size)
+    plt.scatter(x, y, color=c, s=size)
     xname, yname = name.split("-")
     plt.xlabel(xname)
     plt.ylabel(yname)
@@ -47,13 +48,13 @@ def scatter(name: str, x, y, c: str = None, size: str = None):
 if __name__ == "__main__":
     calculation = calculate()
     if calculation is not None:
-        v2, t, s, s2, v, a, aa = calculation
-        scatter("t in s -s in m",t,s)
-        scatter(" t in s - s in m", t, s2, "red", 5)
+        t, s, v, a, ps, pv, aa = calculation
+        scatter("t in s-s in m", t, s)
+        scatter(" t in s-s in m", t, ps, "red", 5)
         plt.show()
         scatter("t-v", t, v)
-        scatter(r"t in s - v in $\frac{m}{s}$", t, v2, "red", 5)
+        scatter(r"t in s - v in $\frac{m}{s}$", t, pv, "red", 5)
         plt.show()
-        scatter("t in s -a in m/s^2" , t, a)
+        scatter("t in s -a in m/s^2", t, a)
         scatter(r"t in s - a in $\frac{m}{s^{2}}$", t, [aa for i in t], "red", 5)
         plt.show()
