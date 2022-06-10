@@ -21,7 +21,7 @@ body{
     background-position: center;
     background-size: cover;
     position: relative;
-    margin-bottom: 175px;
+    margin-bottom: 150px;
 }
 nav{
     display: flex;
@@ -81,4 +81,38 @@ button{
     font-family: sans-serif;
     font-size: 50px;
     font-weight: 800;
+}
+
+/*Task Box*/
+
+#TextfeldTask{
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 150px;
+    padding-left: 25px;
+    padding-right: 25px ;
+    
+}
+.TaskBox{
+    background-color: rgb(187,178,233);
+    border-radius: 20px;
+    max-width: 900px;
+    padding-left: 25px;
+    padding-right: 25px;
+    position: center;
+}
+h3{
+    color: rgb(7,11,25);
+    font-family: sans-serif;
+    margin-top: 20px;
+    font-size: 27.5px;
+}
+p{
+    color: rgb(7,11,25);
+    font-size: 17px;
+    line-height: 22px;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
