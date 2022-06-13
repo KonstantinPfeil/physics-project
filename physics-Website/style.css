@@ -85,7 +85,7 @@ button{
 
 /*Task Box*/
 
-#TextfeldTask{
+#ContentBox{
     max-width: 950px;
     margin-left: auto;
     margin-right: auto; 
@@ -102,7 +102,7 @@ button{
     padding-right: 25px;
     position: center;
 }
-h3{
+h2{
     color: rgb(7,11,25);
     font-family: sans-serif;
     margin-top: 20px;
@@ -110,6 +110,23 @@ h3{
 }
 p{
     color: rgb(7,11,25);
+    font-size: 17px;
+    line-height: 22px;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/*Projekt Umfeld*/
+
+h3{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 20px;
+    font-size: 27.5px;
+}
+p.projektumfeld{
+    color: rgba(255, 255, 255, 0.849);
     font-size: 17px;
     line-height: 22px;
     font-family: sans-serif;
