@@ -5,15 +5,16 @@ import numpy as np
 import math
 
 
-def calculate():
-    try:
-        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
-            times = json.loads(f.read())["times"]  # read times from file
-    except FileNotFoundError:
-        print("no mtimes.txt file \n try auslesen.py")
-        return None
+def calculate(times: [float] = []):
     if not times:
-        return None
+        try:
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
+                times = json.loads(f.read())["times"]  # read times from file
+        except FileNotFoundError:
+            print("no mtimes.txt file \n try auslesen.py")
+            return None
+        if not times:
+            return None
 
     weg = [x * 0.20 for x in range(len(times) + 1)]
 
