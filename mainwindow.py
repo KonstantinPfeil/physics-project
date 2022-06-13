@@ -38,7 +38,7 @@ class MainWindow(Base, Form):
     def setDiagrams(self):
         calculation = calculate()
         if calculation is not None:
-            t, s, v, a, ma = calculation
+            t, s, v, a, ps, pv, aa = calculation
             # ta = [(t, a) for t, a in zip(t, a) if a is not None]
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
             self.diagramm1.setChart(Chart(
@@ -54,7 +54,7 @@ class MainWindow(Base, Form):
                 Chart(
                     [
                         ScatterSeries("t-a", zip(t, a)),
-                        SplineSeries("mean acceleration", [(0, ma), (8.1, ma)])
+                        SplineSeries("mean acceleration", zip(t, aa))
                     ],
                     "t-a"
                 )
