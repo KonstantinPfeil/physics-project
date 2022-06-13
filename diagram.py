@@ -53,9 +53,9 @@ def scatter(name: str, x, y, c: str = None, size: str = None):
 
 
 if __name__ == "__main__":
-    calculation = calculate()
-    if calculation is not None:
-        t, s, v, a, ps, pv, aa = calculation
+        calculation = calculate()
+        if calculation is not None:
+            t, s, v, a, ps, pv, aa = calculation
         scatter("t in s-s in m", t, s)
         scatter(" t in s-s in m", t, ps, "red", 5)
         plt.show()
