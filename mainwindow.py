@@ -38,23 +38,34 @@ class MainWindow(Base, Form):
     def setDiagrams(self):
         calculation = calculate()
         if calculation is not None:
-            t, s, v, a, ma = calculation
+            t, s, v, a, ps, pv, aa = calculation
             # ta = [(t, a) for t, a in zip(t, a) if a is not None]
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
-            self.diagramm1.setChart(Chart(
-                [ScatterSeries("t-s", zip(t, s))],
-                "t-s"
-            ))
+            self.diagramm1.setChart(
+                Chart(
+                    [
+                        ScatterSeries("t-s", zip(t, s)),
+                        SplineSeries("prediction", zip(t, ps))
+                    ],
+                    "t-s"
+                )
+            )
             self.diagramm2.setRenderHint(QPainter.Antialiasing)
             self.diagramm2.setChart(
-                Chart([ScatterSeries("t-v", zip(t, v))], "t-v")
+                Chart(
+                    [
+                        ScatterSeries("t-v", zip(t, v)),
+                        SplineSeries("prediction", zip(t, pv))
+                    ],
+                    "t-v"
+                )
             )
             self.diagramm3.setRenderHint(QPainter.Antialiasing)
             self.diagramm3.setChart(
                 Chart(
                     [
                         ScatterSeries("t-a", zip(t, a)),
-                        SplineSeries("mean acceleration", [(0, ma), (8.1, ma)])
+                        SplineSeries("mean acceleration", zip(t, aa))
                     ],
                     "t-a"
                 )

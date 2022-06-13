@@ -37,6 +37,8 @@ def calculate():
     accelerations.insert(0, averageAcceleration)
     accelerations.insert(0, averageAcceleration)
 
+    averageAcceleration = [averageAcceleration for t in times]
+
     return times, weg, speeds, accelerations, predictedDistance, averageSpeed, averageAcceleration,
 
 
@@ -58,5 +60,5 @@ if __name__ == "__main__":
         scatter(r"t in s - v in $\frac{m}{s}$", t, pv, "red", 5)
         plt.show()
         scatter("t in s -a in m/s^2", t, a)
-        scatter(r"t in s - a in $\frac{m}{s^{2}}$", t, [aa for i in t], "red", 5)
+        scatter(r"t in s - a in $\frac{m}{s^{2}}$", t, aa, "red", 5)
         plt.show()
