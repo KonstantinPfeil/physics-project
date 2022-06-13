@@ -10,18 +10,14 @@ class Chart(QChart):
             self.add(s)
         self.legend().setVisible(True)
         self.createDefaultAxes()
-        """ax = QValueAxis(self)
-        ax.setGridLineVisible(False)
-        ax.setRange(0, maxX)
-        self.addAxis(ax, Qt.AlignmentFlag.AlignBottom)
-        ay = QValueAxis(self)
-        ay.setGridLineVisible(False)
-        ay.setRange(0, maxY)
-        self.addAxis(ay, Qt.AlignmentFlag.AlignLeft)"""
 
     def add(self, s: QXYSeries):
         s.setParent(self)
         self.addSeries(s)
+
+    def gridVis(self, vis: bool):
+        for a in self.axes():
+            a.setGridLineVisible(vis)
 
 
 class SplineSeries(QSplineSeries):
