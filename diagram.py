@@ -2,15 +2,19 @@ import os
 import json
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
 
-def calculate():
-    try:
-        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
-            times = json.loads(f.read())["times"]  # read times from file
-    except FileNotFoundError:
-        print("no mtimes.txt file \n try auslesen.py")
-        return None
+def calculate(times: [] = []):
+    if not times:
+        try:
+            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
+                times = json.loads(f.read())["times"]  # read times from file
+        except FileNotFoundError:
+            print("no mtimes.txt file \n try auslesen.py")
+            return None
+        if not times:
+            return None
 
     weg = [x * 0.20 for x in range(len(times) + 1)]
 
@@ -19,9 +23,11 @@ def calculate():
     speedDifferences = [v - speeds[x - 1] for x, v in enumerate(speeds) if x > 0]
     accelerations = [v / t for v, t in zip(speedDifferences, timeDifferences[1:])]
     averageAcceleration = sum(accelerations) / len(accelerations)
+
     firstTime = np.sqrt(0.4 / accelerations[0])
     times.insert(0, firstTime)
     times = [t - times[0] for t in times]
+
     averageSpeed = [averageAcceleration * t for t in times]
     predictedDistance = [(averageAcceleration / 2) * t**2 for t in times ]
     speedDifferences.insert(0, times[1] - times[0])  # create new difference with new time
@@ -33,9 +39,10 @@ def calculate():
     accelerations.insert(0, averageAcceleration)  # dummy data
     accelerations.insert(0, averageAcceleration)
     accelerations.insert(0, averageAcceleration)
+
     averageAcceleration = [averageAcceleration for t in times]
 
-    return times, weg, speeds, accelerations, predictedDistance, averageSpeed, averageAcceleration
+    return times, weg, speeds, accelerations, predictedDistance, averageSpeed, averageAcceleration,
 
 
 def scatter(name: str, x, y, c: str = None, size: str = None):
@@ -56,5 +63,5 @@ if __name__ == "__main__":
         scatter(r"t in s - v in $\frac{m}{s}$", t, pv, "red", 5)
         plt.show()
         scatter("t in s -a in m/s^2", t, a)
-        scatter(r"t in s - a in $\frac{m}{s^{2}}$", t, aa , "red", 5)
+        scatter(r"t in s - a in $\frac{m}{s^{2}}$", t, aa, "red", 5)
         plt.show()
