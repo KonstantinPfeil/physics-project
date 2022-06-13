@@ -15,7 +15,7 @@ class Chart(QChart):
         s.setParent(self)
         self.addSeries(s)
 
-    def gridVis(self, vis: bool):
+    def setGridVis(self, vis: bool):
         for a in self.axes():
             a.setGridLineVisible(vis)
 

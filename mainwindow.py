@@ -34,6 +34,12 @@ class MainWindow(Base, Form):
         self.checkBox_1.stateChanged.connect(lambda: self.diagramm1.setVisible(self.checkBox_1.isChecked()))
         self.checkBox_2.stateChanged.connect(lambda: self.diagramm2.setVisible(self.checkBox_2.isChecked()))
         self.checkBox_3.stateChanged.connect(lambda: self.diagramm3.setVisible(self.checkBox_3.isChecked()))
+        self.checkbox_grid.stateChanged.connect(lambda: self.setGirdVis(self.checkbox_grid.isChecked()))
+
+    def setGirdVis(self, vis: bool):
+        self.diagramm1.chart().setGridVis(vis)
+        self.diagramm2.chart().setGridVis(vis)
+        self.diagramm3.chart().setGridVis(vis)
 
     def setDiagrams(self):
         calculation = calculate()
