@@ -127,7 +127,6 @@ h3{
 }
 .projektumfeld{
     margin-top: 30px;
-    margin-bottom: 50px;
 }
 .umfeld ul{
     margin-top: 10px;
@@ -145,16 +144,16 @@ h3{
 
 .TeamBox {
     font-family: sans-serif;
+    margin-top: 50px;
 }
 .container {
-    position: absolute;
-    height: 400px;
+    position: relative;
+    height: 360px;
     width: 950px;
     padding-top: 35px;
     left: calc(50% - 410px);
     display: flex;
   }
-  
   .card {
     display: flex;
     height: 310px;
@@ -167,22 +166,18 @@ h3{
     left: 0px;
     
   }
-  
   .card:not(:first-child) {
       margin-left: -50px;
   }
-  
   .card:hover {
     transform: translateY(-20px);
     transition: 0.4s ease-out;
   }
-  
   .card:hover ~ .card {
     position: relative;
     left: 50px;
     transition: 0.4s ease-out;
   }
-  
   .title {
     color: white;
 
@@ -191,7 +186,6 @@ h3{
     left: 20px;
     top: 15px;
   }
-  
   .bar {
     position: absolute;
     top: 100px;
@@ -199,14 +193,12 @@ h3{
     height: 5px;
     width: 150px;
   }
-  
   .emptybar {
     background-color: #3b3349;
     width: 100%;
     height: 100%;
     position: absolute;
   }
-  
   .filledbar {
     position: absolute;
     top: 0px;
@@ -216,7 +208,6 @@ h3{
     background: linear-gradient(90deg, rgb(99, 78, 203) 0%, rgba(187,178,233,1) 65%, rgba(187,178,233,1) 100%);
     transition: 0.4s ease-out;
   }
-  
   .card:hover .filledbar {
     width: 100%;
     transition: 0.4s ease-out;
@@ -230,4 +221,30 @@ h3{
     border-radius: 50%;
     width: 150px;
     height: 150px;
+  }
+
+  /*Planung*/
+  .Plannung{
+    max-width: 975px;
+    margin-left: auto;
+    margin-right: auto; 
+  }
+  .Trello h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 15px;
+    font-size: 25px;
+  }
+  .Trello p {
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+  .Trello img{
+    margin-top: 15px;
+    border-radius: 20px;
+    max-width: 950px;
+    position: center;
   }
