@@ -103,13 +103,13 @@ button{
     margin-top: 150px;
 }
 h2{
-    color: rgb(7,11,25);
+    color: rgb(22,27,44);
     font-family: sans-serif;
     margin-top: 12px;
     font-size: 27.5px;
 }
 p{
-    color: rgb(7,11,25);
+    color: rgb(22,27,44);
     font-size: 17px;
     line-height: 22px;
     font-family: sans-serif;
@@ -126,8 +126,8 @@ h3{
     font-size: 27.5px;
 }
 .projektumfeld{
-    margin-top: 150px;
-    margin-bottom: 150px;
+    margin-top: 30px;
+    margin-bottom: 50px;
 }
 .umfeld ul{
     margin-top: 10px;
