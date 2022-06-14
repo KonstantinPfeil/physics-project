@@ -12,6 +12,32 @@ body{
     background-color:rgb(22,27,44); 
 }
 
+/*scroll to top*/
+
+#progress{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: 65px;
+    width: 65px;
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+#progress-value {
+    display: block;
+    height: calc(100% - 12px);
+    width: calc(100% - 12px);
+    background-color: #2d2838;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    color: #bbb2e9;
+}
+
 /*Homescreen*/
 
 .header{
