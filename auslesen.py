@@ -3,12 +3,12 @@ import json
 import os
 
 
-def readFromFile(path: str):
+def readFromFile(path: str, toFile: bool = True):
     times = []
-    if path.__contains__(".xlsx"):
-        file = pd.read_excel(path)  # Daten  aus Datei lesen
+    if path.__contains__(".xlsx"): # check if it is a exel file
+        file = pd.read_excel(path)  # read from exel
     else:
-        file = pd.read_csv(path, header=0, sep=";")
+        file = pd.read_csv(path, header=0, sep=";") # read from csv
     magnetData = pd.DataFrame(file, columns=["locationHeadingZ", "locationHeadingTimestamp_since1970"]).to_numpy()
     # gebrauchte colums entnehmen
     start = magnetData[0][1]  # start timestamp lesen
@@ -23,10 +23,12 @@ def readFromFile(path: str):
                 times.append(time)  # hinzufügen der Zeit
                 positive = not positive # umkehren des Vorzeichen
 
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt"), "w") as f:
-        f.write(
-            json.dumps(dict(times=times), indent=4)
-        )
+    if toFile:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt"), "w") as f:
+            f.write(
+                json.dumps(dict(times=times), indent=4)
+            )
+    return times
 
 
 if __name__ == "__main__":
