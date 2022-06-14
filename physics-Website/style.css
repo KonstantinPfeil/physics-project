@@ -94,7 +94,7 @@ button{
     
 }
 .TaskBox{
-    background-color: rgb(187,178,233);
+    background-color: rgba(187,178,233, 0.975);
     border-radius: 20px;
     max-width: 900px;
     padding-left: 25px;
@@ -153,8 +153,8 @@ h3{
     padding-top: 35px;
     left: calc(50% - 410px);
     display: flex;
-  }
-  .card {
+}
+.card {
     display: flex;
     height: 310px;
     width: 200px;
@@ -165,41 +165,41 @@ h3{
     position: relative;
     left: 0px;
     
-  }
-  .card:not(:first-child) {
+}
+.card:not(:first-child) {
       margin-left: -50px;
-  }
-  .card:hover {
+}
+.card:hover {
     transform: translateY(-20px);
     transition: 0.4s ease-out;
-  }
-  .card:hover ~ .card {
+}
+.card:hover ~ .card {
     position: relative;
     left: 50px;
     transition: 0.4s ease-out;
-  }
-  .title {
+}
+.title {
     color: white;
 
     font-weight: 300;
     position: absolute;
     left: 20px;
     top: 15px;
-  }
-  .bar {
+}
+.bar {
     position: absolute;
     top: 100px;
     left: 20px;
     height: 5px;
     width: 150px;
-  }
-  .emptybar {
+}
+.emptybar {
     background-color: #3b3349;
     width: 100%;
     height: 100%;
     position: absolute;
-  }
-  .filledbar {
+}
+.filledbar {
     position: absolute;
     top: 0px;
     z-index: 3;
@@ -207,44 +207,65 @@ h3{
     height: 100%;
     background: linear-gradient(90deg, rgb(99, 78, 203) 0%, rgba(187,178,233,1) 65%, rgba(187,178,233,1) 100%);
     transition: 0.4s ease-out;
-  }
-  .card:hover .filledbar {
+}
+.card:hover .filledbar {
     width: 100%;
     transition: 0.4s ease-out;
-  }
-  .avatar {
+}
+.avatar {
     position: absolute;
     top: 130px;
     left: calc(50% - 75px);
-  }
-  .avatar img{
+}
+.avatar img{
     border-radius: 50%;
     width: 150px;
     height: 150px;
-  }
+}
 
-  /*Planung*/
-  .Plannung{
+
+/*Planung*/
+.Plannung{
     max-width: 975px;
     margin-left: auto;
     margin-right: auto; 
-  }
-  .Trello h4{
+}
+.Trello h4{
     color: rgb(187,178,233);
     font-family: sans-serif;
-    margin-top: 15px;
+    margin-top: 30px;
     font-size: 25px;
-  }
-  .Trello p {
+}
+.Trello p {
     color: rgba(255,255,255,0.849);
     font-size: 17px;
     line-height: 25px;
     font-family: sans-serif;
     margin-top: 5px;
 }
-  .Trello img{
-    margin-top: 15px;
+.Trello img{
+    margin-top: 10px;
     border-radius: 20px;
     max-width: 950px;
     position: center;
-  }
+    margin-bottom: 30px;
+}
+.GitHub h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.GitHub p {
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.GitHub img{
+    margin-top: 10px;
+    border-radius: 20px;
+    max-width: 950px;
+    position: center;
+}
