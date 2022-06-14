@@ -2,9 +2,16 @@ import os
 import json
 import matplotlib.pyplot as plt
 import numpy as np
+from typing import List, Optional
+import math
 
 
-def calculate(times: [float] = []):
+# If you do type highlighting also highlight return values. use typing libary for giving back a Tuple[]
+# filled with the datatypes
+def calculate(times: Optional[List[float]] = None):
+    if times is None:  # DO NEVER SET DEFAULTS WITH MUTABLE DATATYPES
+        times = []
+
     if not times:
         try:
             with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
@@ -46,8 +53,11 @@ def calculate(times: [float] = []):
     return times, weg, speeds, accelerations, predictedDistance, averageSpeed, averageAcceleration
 
 
-def scatter(name: str, x, y, c: str = None, size: str = None):
+# again: highlight return values
+def scatter(name: str, x, y, c: Optional[str] = None, size: Optional[int] = None):
     plt.scatter(x, y, color=c, s=size)
+    # use underscores for variable names e.g. x_name
+    # this is a pep standard
     xname, yname = name.split("-")
     plt.xlabel(xname)
     plt.ylabel(yname)
