@@ -21,7 +21,6 @@ body{
     background-position: center;
     background-size: cover;
     position: relative;
-    margin-bottom: 150px;
 }
 nav{
     display: flex;
@@ -101,6 +100,7 @@ button{
     padding-left: 25px;
     padding-right: 25px;
     position: center;
+    margin-top: 150px;
 }
 h2{
     color: rgb(7,11,25);
@@ -126,7 +126,7 @@ h3{
     font-size: 27.5px;
 }
 .projektumfeld{
-    margin-top: 75px;
+    margin-top: 150px;
     margin-bottom: 150px;
 }
 .umfeld ul{
