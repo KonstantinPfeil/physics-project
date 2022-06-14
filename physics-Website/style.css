@@ -243,6 +243,9 @@ h3{
     font-family: sans-serif;
     margin-top: 5px;
 }
+.Trello a{
+    color:#bbb2e9;
+}
 .Trello img{
     margin-top: 10px;
     border-radius: 20px;
@@ -262,6 +265,9 @@ h3{
     line-height: 25px;
     font-family: sans-serif;
     margin-top: 5px;
+}
+.GitHub a{
+    color:#bbb2e9;
 }
 .GitHub img{
     margin-top: 10px;
