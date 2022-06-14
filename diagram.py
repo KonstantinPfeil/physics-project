@@ -5,8 +5,6 @@ import numpy as np
 from typing import List, Optional
 
 
-# If you do type highlighting also highlight return values. use typing library for giving back a Tuple[]
-# filled with the datatypes
 def calculate(times: Optional[List[float]] = None):
     if times is None:
         try:
@@ -60,15 +58,15 @@ def scatter(name: str, x, y, c: Optional[str] = None, size: Optional[int] = None
 
 
 if __name__ == "__main__":
-        calculation = calculate()
-        if calculation is not None:
-            t, s, v, a, ps, pv, aa = calculation
-        scatter("t in s-s in m", t, s)
-        scatter(" t in s-s in m", t, ps, "red", 5)
-        plt.show()
-        scatter("t-v", t, v)
-        scatter(r"t in s - v in $\frac{m}{s}$", t, pv, "red", 5)
-        plt.show()
-        scatter("t in s -a in m/s^2", t, a)
-        scatter(r"t in s - a in $\frac{m}{s^{2}}$", t, aa, "red", 5)
-        plt.show()
+    calculation = calculate()
+    if calculation is not None:
+        t, s, v, a, ps, pv, aa = calculation
+    scatter("t in s-s in m", t, s)
+    scatter(" t in s-s in m", t, ps, "red", 5)
+    plt.show()
+    scatter("t-v", t, v)
+    scatter(r"t in s - v in $\frac{m}{s}$", t, pv, "red", 5)
+    plt.show()
+    scatter("t in s -a in m/s^2", t, a)
+    scatter(r"t in s - a in $\frac{m}{s^{2}}$", t, aa, "red", 5)
+    plt.show()
