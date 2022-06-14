@@ -24,11 +24,12 @@ async def get_data_from_file(file: UploadFile = File(...)):
     if file.content_type.__contains__("openxmlformats"):
         file = pd.read_excel(bytesOfFile)
     else:
-        file = pd.read_csv(bytesOfFile)
+        file = pd.read_csv(bytesOfFile, sep=";", header=0)
     times = readFromFile(file=file)
     calculation = calculate(times)
     if calculation is not None:
         t, s, v, a, ps, pv, aa = calculation
         return dict(t=t, s=s, v=v, a=a, ps=ps, pv=pv, aa=aa)
     else:
+        print("err")
         return None

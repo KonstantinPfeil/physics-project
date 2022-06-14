@@ -14,6 +14,7 @@ def calculate(times: [] = []):
             print("no mtimes.txt file \n try auslesen.py")
             return None
         if not times:
+            print("err")
             return None
 
     weg = [x * 0.20 for x in range(len(times) + 1)]
