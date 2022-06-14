@@ -1,11 +1,15 @@
 fetch("/api/data/")
     .then(res => {return res.json()})
-    .then(data => drawChart(data["t"], data["s"], data["ps"]));
+    .then(data => {
+        drawChart(data["t"], data["s"], data["ps"], "chartTS");
+        drawChart(data["t"], data["v"], data["pv"], "chartTV");
+        drawChart(data["t"], data["a"], data["aa"], "chartTA");
+    });
 
-var myChart = null;
+var Charts = {};
 
-function drawChart(xs, ys, pys){
-    if (myChart != null) myChart.destroy();
+function drawChart(xs, ys, pys, name){
+    if (Charts[name] != null) Charts[name].destroy();
 
     let points = new Array(xs.length);
     for(let i = 0; i< points.length; i++){
@@ -56,8 +60,8 @@ function drawChart(xs, ys, pys){
         }
     };
 
-    myChart = new Chart(
-        document.getElementById('chartTS'),
+    Charts[name] = new Chart(
+        document.getElementById(name),
         config
     );
 }
@@ -69,6 +73,10 @@ document.getElementById("fileupload").addEventListener("change",
             formdata.append("file", files[0])
             fetch("/api/data/", {method: "Post", body: formdata})
                 .then( res => {return res.json()})
-                .then( res => {drawChart(res["t"], res["s"], res["ps"])})
+                .then(data => {
+                    drawChart(data["t"], data["s"], data["ps"], "chartTS");
+                    drawChart(data["t"], data["v"], data["pv"], "chartTV");
+                    drawChart(data["t"], data["a"], data["aa"], "chartTA");
+                });
         }
 )
