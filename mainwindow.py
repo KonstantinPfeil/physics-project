@@ -44,7 +44,7 @@ class MainWindow(Base, Form):
     def setDiagrams(self):
         calculation = calculate()
         if calculation is not None:
-            t, s, v, a, ps, pv, aa = calculation
+            t, s, v, a, ps, pv, aa, paras_s, paras_v, paras_a = calculation
             # ta = [(t, a) for t, a in zip(t, a) if a is not None]
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
             self.diagramm1.setChart(
