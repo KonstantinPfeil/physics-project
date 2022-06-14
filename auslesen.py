@@ -5,11 +5,9 @@ import os
 
 def readFromFile(path: str = None, file=None):
     times = []
-    if file:
-        file = pd.read_csv(file)
-    elif path.__contains__(".xlsx"):  # check if it is a exel file
+    if file is None and path.__contains__(".xlsx"):  # check if it is a exel file
         file = pd.read_excel(path)  # read from exel
-    else:
+    elif file is None:
         file = pd.read_csv(path, header=0, sep=";")  # read from csv
     magnetData = pd.DataFrame(file, columns=["locationHeadingZ", "locationHeadingTimestamp_since1970"]).to_numpy()
     # gebrauchte colums entnehmen

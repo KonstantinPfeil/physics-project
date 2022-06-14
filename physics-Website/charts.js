@@ -1,4 +1,4 @@
-fetch("http://localhost:8000/api/data/")
+fetch("/api/data/")
     .then(res => {return res.json()})
     .then(data => drawChart(data["t"], data["s"], data["ps"]));
 
