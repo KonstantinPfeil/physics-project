@@ -113,7 +113,7 @@ p{
     font-size: 17px;
     line-height: 22px;
     font-family: sans-serif;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     margin-top: 5px;
 }
 
@@ -220,4 +220,14 @@ h3{
   .card:hover .filledbar {
     width: 100%;
     transition: 0.4s ease-out;
+  }
+  .avatar {
+    position: absolute;
+    top: 130px;
+    left: calc(50% - 75px);
+  }
+  .avatar img{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
   }
