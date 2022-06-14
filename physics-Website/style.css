@@ -9,7 +9,33 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    background-color:rgb(7,11,25); 
+    background-color:rgb(22,27,44); 
+}
+
+/*scroll to top*/
+
+#progress{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: 65px;
+    width: 65px;
+    display: none;
+    place-items: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+#progress-value {
+    display: block;
+    height: calc(100% - 12px);
+    width: calc(100% - 12px);
+    background-color: #2d2838;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 35px;
+    color: #bbb2e9;
 }
 
 /*Homescreen*/
@@ -17,11 +43,10 @@ body{
 .header{
     min-height: 100vh;
     width: 100%;
-    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(images/Background1.jpg);
+    background-image: linear-gradient(rgba(26, 33, 57, 0.7),rgba(26, 33, 57,0.7)), url(images/Background1.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
-    margin-bottom: 150px;
 }
 nav{
     display: flex;
@@ -50,7 +75,7 @@ nav{
     content: '';
     width: 0%;
     height: 3px;
-    background: #bbb2e9;
+    background: rgba(255,255,255,0.849);
     display: block;
     margin: auto;
     transition: 0.5s;
@@ -59,10 +84,10 @@ nav{
     width: 100%;
 }
 button{
-    color: #bbb2e9;
+    color: rgba(255,255,255,0.849);
     padding: 10 px 25px;
     background: transparent;
-    border: 1px solid #bbb2e9;
+    border: 1px solid rgba(255,255,255,0.849);
     border-radius: 20px;
     outline: none;
     cursor: pointer;
@@ -95,26 +120,27 @@ button{
     
 }
 .TaskBox{
-    background-color: rgb(187,178,233);
+    background-color: rgba(187,178,233, 0.975);
     border-radius: 20px;
     max-width: 900px;
     padding-left: 25px;
     padding-right: 25px;
     position: center;
+    margin-top: 150px;
 }
 h2{
-    color: rgb(7,11,25);
+    color: rgb(22,27,44);
     font-family: sans-serif;
-    margin-top: 20px;
+    margin-top: 12px;
     font-size: 27.5px;
 }
 p{
-    color: rgb(7,11,25);
+    color: rgb(22,27,44);
     font-size: 17px;
     line-height: 22px;
     font-family: sans-serif;
-    margin-bottom: 20px;
-    margin-top: 10px;
+    margin-bottom: 15px;
+    margin-top: 5px;
 }
 
 /*Projekt Umfeld*/
@@ -125,11 +151,153 @@ h3{
     margin-top: 20px;
     font-size: 27.5px;
 }
-p.projektumfeld{
-    color: rgba(255, 255, 255, 0.849);
+.projektumfeld{
+    margin-top: 30px;
+}
+.umfeld ul{
+    margin-top: 10px;
+}
+.umfeld ul li {
+    margin-left: calc(50% - 410px) ;
+    color: rgba(255,255,255,0.849);
     font-size: 17px;
     line-height: 22px;
     font-family: sans-serif;
-    margin-bottom: 20px;
+    margin-top: 5px;
+}
+
+/*Team*/
+
+.TeamBox {
+    font-family: sans-serif;
+    margin-top: 50px;
+}
+.container {
+    position: relative;
+    height: 360px;
+    width: 950px;
+    padding-top: 35px;
+    left: calc(50% - 410px);
+    display: flex;
+}
+.card {
+    display: flex;
+    height: 310px;
+    width: 200px;
+    background-color: #2d2838;
+    border-radius: 10px;
+    box-shadow: -1rem 0 3rem rgba(0, 0, 0, 0.33);
+    transition: 0.4s ease-out;
+    position: relative;
+    left: 0px;
+    
+}
+.card:not(:first-child) {
+      margin-left: -50px;
+}
+.card:hover {
+    transform: translateY(-20px);
+    transition: 0.4s ease-out;
+}
+.card:hover ~ .card {
+    position: relative;
+    left: 50px;
+    transition: 0.4s ease-out;
+}
+.title {
+    color: white;
+
+    font-weight: 300;
+    position: absolute;
+    left: 20px;
+    top: 15px;
+}
+.bar {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    height: 5px;
+    width: 150px;
+}
+.emptybar {
+    background-color: #3b3349;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+.filledbar {
+    position: absolute;
+    top: 0px;
+    z-index: 3;
+    width: 0px;
+    height: 100%;
+    background: linear-gradient(90deg, rgb(99, 78, 203) 0%, rgba(187,178,233,1) 65%, rgba(187,178,233,1) 100%);
+    transition: 0.4s ease-out;
+}
+.card:hover .filledbar {
+    width: 100%;
+    transition: 0.4s ease-out;
+}
+.avatar {
+    position: absolute;
+    top: 130px;
+    left: calc(50% - 75px);
+}
+.avatar img{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+
+/*Planung*/
+.Plannung{
+    max-width: 975px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+.Trello h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.Trello p {
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.Trello a{
+    color:#bbb2e9;
+}
+.Trello img{
     margin-top: 10px;
+    border-radius: 20px;
+    max-width: 950px;
+    position: center;
+    margin-bottom: 30px;
+}
+.GitHub h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.GitHub p {
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.GitHub a{
+    color:#bbb2e9;
+}
+.GitHub img{
+    margin-top: 10px;
+    border-radius: 20px;
+    max-width: 950px;
+    position: center;
 }

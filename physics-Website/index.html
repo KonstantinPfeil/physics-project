@@ -5,16 +5,20 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script defer src="charts.js"></script>
+        <script src="script.js"></script>
     </head>
     <body>
+        <div id="progress">
+            <span id="progress-value">&#8593</span>
+        </div>
         <section class= "header">
             <nav>
                 <a href="index.html"></a>
                 <div class="links" id="navlinks">
                     <ul>
-                        <li><a href="#TextfeldTask" >AUFGABE</a></li>
-                        <li><a href="#team" >TEAM</a></li>
-                        <li><a href="#planung" >PLANUNG</a></li>
+                        <li><a href="#ContentBox" >AUFGABE</a></li>
+                        <li><a href="#TEAM" >TEAM</a></li>
+                        <li><a href="#Planung" >PLANUNG</a></li>
                         <li><a href="#soll-ist-Vergleich" >SOLL-IST</a></li>
                         <li><a href="#reflektion" >REFLEKTION</a></li>
                     </ul>
@@ -43,13 +47,79 @@
         </section>
             <div class="projektumfeld">
                 <h3>Projektumfeld</h3>
-                <ul>
-                    <li>weniger in der Schule gearbeitet</li>
-                    <li>hauptsächlich zu Hause</li>
-                    <li>private Computer statt Schul-PCs (unkomplizierter)</li>
-                    <li></li>
-                </ul>
+                <div class="umfeld">
+                    <ul>
+                        <li>- Physik Praktikum in Form eines Experimentes</li>
+                        <li>- Auswertung mit Mircosoft Excel </li>
+                        <li>- in den letzen Jahren: Auswertung aussließlich in Physik</li>
+                        <li>- Dieses Jahr: Fächerübergreifend mit Informatiksystemen</li>
+                        <li>- Aufgabe in IS: Programm zur automatisierten Auswerrtung der Rohdaten erstellen</li>
+                    </ul>
+                </div>
             </div>
+            <section id="TEAM">
+                <div class="TeamBox">
+                    <h3>Team</h3>
+                    <div class="container">
+                        <div class="card">
+                          <h3 class="title">Julius<br>Weißleder</h3>
+                          <div class="bar">
+                            <div class="emptybar"></div>
+                            <div class="filledbar"></div>
+                          </div>
+                          <div class="avatar">
+                            <img src="images/Julius.jpg">
+                        </div>
+                        </div>
+                        <div class="card">
+                          <h3 class="title">Felix<br>Wendt</h3>
+                          <div class="bar">
+                            <div class="emptybar"></div>
+                            <div class="filledbar"></div>
+                          </div>
+                          <div class="avatar">
+                            <img src="images/Felix.jpg">
+                        </div>
+                        </div>
+                        <div class="card">
+                          <h3 class="title">Konstantin<br>Pfeil</h3>
+                          <div class="bar">
+                            <div class="emptybar"></div>
+                            <div class="filledbar"></div>
+                          </div>
+                          <div class="avatar">
+                            <img src="images/Konstantin.jpeg">
+                        </div>
+                        </div>
+                        <div class="card">
+                          <h3 class="title">Christoph<br>Trsichler</h3>
+                          <div class="bar">
+                            <div class="emptybar"></div>
+                            <div class="filledbar"></div>
+                          </div>
+                          <div class="avatar">
+                            <img src="images/fakeChristoph.jpg">
+                        </div>
+                        </div>
+                      </div>
+                </div>
+            </section>
+           <section id="Planung">
+            <div class="Plannung">
+                <h3>Plannung/ Organisation</h3>
+                <div class="Trello">
+                    <h4>Trello</h4>
+                    <p>Um unsere einzelnen Aufagen in Meilensteine zu unterteilein nutzen wir das KANBAN-System. Dieses beschreibt die methode der Einteilung in die Bereiche ToDo, Doing und Done. Somit kann jeder die Übersicht über unser Projekt behalten und sieht aus Anhieb den fortschritt der Gruppe. Zur perfekten Umsetzung von diesem System haben wir uns für die Website <a href="https://trello.com/de/tour">Trello</a> entschieden.</p>
+                    <img src="images/Trello.jpg" alt="Trello">
+                </div>
+                <div class="GitHub">
+                    <h4>GitHub</h4>
+                    <p>Um unsere Fortschritte zu speichern und für alle aus dem Team erreichbar zu machen, nutzen wir <a href="https://github.com/">GitHub</a>. GitHub ist ein webbasierter Filehosting-Service für Softwareentwicklung. Dieser ermöglicht es uns zudem gemeinsam von unseren privaten Computern an dem selben Projekt zu arbeiten und den jeweiligen Code sehr einfach zwischeneinnander auszutauschen bzw. zu kombinieren.</p>
+                    <img src="images/GitHub.png" alt="GitHub">
+                </div>
+             </div>
+                
+           </section>
         </section>
     </body>
 </html>

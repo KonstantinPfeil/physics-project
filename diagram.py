@@ -2,51 +2,57 @@ import os
 import json
 import matplotlib.pyplot as plt
 import numpy as np
-import math
+from typing import List, Optional
 
 
-def calculate(times: [] = []):
-    if not times:
+# If you do type highlighting also highlight return values. use typing library for giving back a Tuple[]
+# filled with the datatypes
+def calculate(times: Optional[List[float]] = None):
+    if times is None:
         try:
             with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
                 times = json.loads(f.read())["times"]  # read times from file
         except FileNotFoundError:
-            print("no mtimes.txt file \n try auslesen.py")
+            print("no mtimes.txt file \ntry auslesen.py")
             return None
         if not times:
-            print("err")
+            print("no times in mtimes.txt")
             return None
+    times = np.asarray(times)
+    weg = np.linspace(0, 2, len(times) + 1)
 
-    weg = [x * 0.20 for x in range(len(times) + 1)]
+    timeDifferences = np.diff(times)
 
-    timeDifferences = [t - times[x - 1] for x, t in enumerate(times) if x > 0]
-    speeds = [0.20 / t for t in timeDifferences]
-    speedDifferences = [v - speeds[x - 1] for x, v in enumerate(speeds) if x > 0]
-    accelerations = [v / t for v, t in zip(speedDifferences, timeDifferences[1:])]
-    averageAcceleration = sum(accelerations) / len(accelerations)
+    speeds = 0.2 / timeDifferences
+    speedDifferences = np.diff(speeds)
+    averageDeltaTime = timeDifferences[:-1] / 2 + timeDifferences[1:] / 2
+
+    accelerations = speedDifferences / averageDeltaTime
+    averageAcceleration = np.average(accelerations)
 
     firstTime = np.sqrt(0.4 / accelerations[0])
-    times.insert(0, firstTime)
-    times = [t - times[0] for t in times]
-
-    averageSpeed = [averageAcceleration * t for t in times]
-    predictedDistance = [(averageAcceleration / 2) * t**2 for t in times ]
-    speedDifferences.insert(0, times[1] - times[0])  # create new difference with new time
+    times = times - times[0] + firstTime
+    times = np.insert(times, 0, 0)
 
     # first and second speed
-    speeds.insert(0, 0.2 / firstTime)
-    speeds.insert(0, 0)  # zero point
+    speeds = np.insert(speeds, 0, 0.2 / firstTime)
+    speeds = np.insert(speeds, 0, 0)  # zero point
 
-    accelerations.insert(0, averageAcceleration)  # dummy data
-    accelerations.insert(0, averageAcceleration)
-    accelerations.insert(0, averageAcceleration)
+    for i in range(3):
+        accelerations = np.insert(accelerations, 0, averageAcceleration)  # dummy data
 
-    averageAcceleration = [averageAcceleration for t in times]
+    fun_paras_t_s = [round(x, 3) for x in np.polyfit(times, weg, 2)]
+    fun_paras_t_v = [round(x, 3) for x in np.polyfit(times, speeds, 1)]
+    fun_paras_t_a = [round(x, 3) for x in np.polyfit(times, accelerations, 0)]
+    s_fit = np.poly1d(fun_paras_t_s)
+    v_fit = np.poly1d(fun_paras_t_v)
+    a_fit = np.poly1d(fun_paras_t_a)
 
-    return times, weg, speeds, accelerations, predictedDistance, averageSpeed, averageAcceleration,
+    return times, weg, speeds, accelerations, s_fit(times), v_fit(times), a_fit(times), \
+        fun_paras_t_s, fun_paras_t_v, fun_paras_t_a
 
 
-def scatter(name: str, x, y, c: str = None, size: str = None):
+def scatter(name: str, x, y, c: Optional[str] = None, size: Optional[int] = None):
     plt.scatter(x, y, color=c, s=size)
     xname, yname = name.split("-")
     plt.xlabel(xname)

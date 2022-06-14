@@ -2,3 +2,4 @@ env/
 .idea/
 __pycache__/
 /mtimes.txt
+/physics-project.pyproject.user
