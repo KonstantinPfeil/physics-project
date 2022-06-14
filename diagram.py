@@ -2,10 +2,16 @@ import os
 import json
 import matplotlib.pyplot as plt
 import numpy as np
+from typing import List, Optional
 import math
 
 
-def calculate(times: [float] = []):
+# If you do type highlighting also highlight return values. use typing libary for giving back a Tuple[]
+# filled with the datatypes
+def calculate(times: Optional[List[float]] = None):
+    if times is None:  # DO NEVER SET DEFAULTS WITH MUTABLE DATATYPES
+        times = []
+
     if not times:
         try:
             with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
@@ -18,6 +24,7 @@ def calculate(times: [float] = []):
 
     weg = [x * 0.20 for x in range(len(times) + 1)]
 
+    # t and v are shadowing from outerscope (the "main" if) please create a main function and call that in the if
     timeDifferences = [t - times[x - 1] for x, t in enumerate(times) if x > 0]
 
     speeds = [0.20 / t for t in timeDifferences]
@@ -44,11 +51,16 @@ def calculate(times: [float] = []):
 
     averageAcceleration = [averageAcceleration for t in times]
 
+    # you do know that you are giving back a mutable datatype?
+    # the list you put into the function is also edited meaning that giving time is useless
     return times, weg, speeds, accelerations, predictedDistance, averageSpeed, averageAcceleration,
 
 
-def scatter(name: str, x, y, c: str = None, size: str = None):
+# again: highlight return values
+def scatter(name: str, x, y, c: Optional[str] = None, size: Optional[int] = None):
     plt.scatter(x, y, color=c, s=size)
+    # use underscores for variable names e.g. x_name
+    # this is a pep standard
     xname, yname = name.split("-")
     plt.xlabel(xname)
     plt.ylabel(yname)
