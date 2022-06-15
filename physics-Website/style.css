@@ -28,8 +28,8 @@ body{
 }
 #progress-value {
     display: block;
-    height: calc(100% - 12px);
-    width: calc(100% - 12px);
+    height: calc(100% - 10px);
+    width: calc(100% - 10px);
     background-color: #2d2838;
     border-radius: 50%;
     display: grid;
@@ -38,7 +38,7 @@ body{
     color: #bbb2e9;
 }
 
-/*Homescreen*/
+/*Topscreen*/
 
 .header{
     min-height: 100vh;
@@ -154,11 +154,7 @@ h3{
 .projektumfeld{
     margin-top: 30px;
 }
-.umfeld ul{
-    margin-top: 10px;
-}
-.umfeld ul li {
-    margin-left: calc(50% - 410px) ;
+.umfeld p{
     color: rgba(255,255,255,0.849);
     font-size: 17px;
     line-height: 22px;
@@ -174,7 +170,7 @@ h3{
 }
 .container {
     position: relative;
-    height: 360px;
+    height: 380px;
     width: 950px;
     padding-top: 35px;
     left: calc(50% - 410px);
@@ -186,7 +182,7 @@ h3{
     width: 200px;
     background-color: #2d2838;
     border-radius: 10px;
-    box-shadow: -1rem 0 3rem rgba(0, 0, 0, 0.33);
+    box-shadow: -1rem 0 2rem rgba(0, 0, 0, 0.33);
     transition: 0.4s ease-out;
     position: relative;
     left: 0px;
