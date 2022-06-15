@@ -39,9 +39,9 @@ def calculate(times: Optional[List[float]] = None):
     for i in range(3):
         accelerations = np.insert(accelerations, 0, averageAcceleration)  # dummy data
 
-    fun_paras_t_s = [round(x, 3) for x in np.polyfit(times, weg, 2)]
-    fun_paras_t_v = [round(x, 3) for x in np.polyfit(times, speeds, 1)]
-    fun_paras_t_a = [round(x, 3) for x in np.polyfit(times, accelerations, 0)]
+    fun_paras_t_s = np.round_(np.polyfit(times, weg, 2), 4)
+    fun_paras_t_v = np.round_(np.polyfit(times, speeds, 1), 4)
+    fun_paras_t_a = np.round_(np.polyfit(times, accelerations, 0), 4)
     s_fit = np.poly1d(fun_paras_t_s)
     v_fit = np.poly1d(fun_paras_t_v)
     a_fit = np.poly1d(fun_paras_t_a)
