@@ -53,7 +53,7 @@ class MainWindow(Base, Form):
                         ScatterSeries("t-s", zip(t, s)),
                         SplineSeries("prediction", zip(t, ps))
                     ],
-                    "t-s"
+                    "t-s", "t in s", "s in m"
                 )
             )
             self.diagramm2.setRenderHint(QPainter.Antialiasing)
@@ -63,7 +63,7 @@ class MainWindow(Base, Form):
                         ScatterSeries("t-v", zip(t, v)),
                         SplineSeries("prediction", zip(t, pv))
                     ],
-                    "t-v"
+                    "t-v", "t in s", "v in m/s"
                 )
             )
             self.diagramm3.setRenderHint(QPainter.Antialiasing)
@@ -71,9 +71,9 @@ class MainWindow(Base, Form):
                 Chart(
                     [
                         ScatterSeries("t-a", zip(t, a)),
-                        SplineSeries("mean acceleration", zip(t, aa))
+                        SplineSeries(f"average acceleration", zip(t, aa))
                     ],
-                    "t-a"
+                    "t-a", "t in s", 'a in m/s²'
                 )
             )
         else:
