@@ -11,11 +11,13 @@ class Chart(QChart):
             self.add(s)
         self.legend().setVisible(True)
         self.createDefaultAxes()
-        """xaxis, yaxis = self.axes()
-        yaxis.setTitleFont(QFont("sans-serif", 9))
+        xaxis, yaxis = self.axes()
+        """yaxis.setTitleFont(QFont("sans-serif", 9))
         xaxis.setTitleFont(QFont("sans-serif", 9))
         yaxis.setTitleText(yname)
         xaxis.setTitleText(xname)"""
+        """xaxis.setLabelFormat(f"%.2f{xname}")
+        yaxis.setLabelFormat(f"%.2f{yname}")"""
 
     def add(self, s: QXYSeries):
         s.setParent(self)
