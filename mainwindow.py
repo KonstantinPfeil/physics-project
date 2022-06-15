@@ -35,6 +35,12 @@ class MainWindow(Base, Form):
         self.checkBox_2.stateChanged.connect(lambda: self.diagramm2.setVisible(self.checkBox_2.isChecked()))
         self.checkBox_3.stateChanged.connect(lambda: self.diagramm3.setVisible(self.checkBox_3.isChecked()))
         self.checkbox_grid.stateChanged.connect(lambda: self.setGirdVis(self.checkbox_grid.isChecked()))
+        self.checkBox_formeln.stateChanged.connect(lambda: self.setSerVis(self.checkBox_formeln.isChecked()))
+
+    def setSerVis(self, vis: bool):
+        self.diagramm1.chart().setSeriesVis(1, vis)
+        self.diagramm2.chart().setSeriesVis(1, vis)
+        self.diagramm3.chart().setSeriesVis(1, vis)
 
     def setGirdVis(self, vis: bool):
         self.diagramm1.chart().setGridVis(vis)
@@ -45,13 +51,12 @@ class MainWindow(Base, Form):
         calculation = calculate()
         if calculation is not None:
             t, s, v, a, ps, pv, aa, paras_s, paras_v, paras_a = calculation
-            # ta = [(t, a) for t, a in zip(t, a) if a is not None]
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
             self.diagramm1.setChart(
                 Chart(
                     [
                         ScatterSeries("t-s", zip(t, s)),
-                        SplineSeries("prediction", zip(t, ps))
+                        SplineSeries("fit", zip(t, ps))
                     ],
                     "t-s", "t in s", "s in m"
                 )
@@ -61,7 +66,7 @@ class MainWindow(Base, Form):
                 Chart(
                     [
                         ScatterSeries("t-v", zip(t, v)),
-                        SplineSeries("prediction", zip(t, pv))
+                        SplineSeries("fit", zip(t, pv))
                     ],
                     "t-v", "t in s", "v in m/s"
                 )
