@@ -114,7 +114,6 @@ button{
     max-width: 950px;
     margin-left: auto;
     margin-right: auto; 
-    margin-bottom: 150px;
     padding-left: 25px;
     padding-right: 25px ;
     
@@ -167,6 +166,9 @@ h3{
 .TeamBox {
     font-family: sans-serif;
     margin-top: 50px;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto; 
 }
 .container {
     position: relative;
@@ -248,7 +250,7 @@ h3{
 
 /*Planung*/
 .Plannung{
-    max-width: 975px;
+    max-width: 950px;
     margin-left: auto;
     margin-right: auto; 
 }
@@ -279,7 +281,7 @@ h3{
     color: rgb(187,178,233);
     font-family: sans-serif;
     margin-top: 30px;
-    font-size: 25px;
+    font-size: 22.5px;
 }
 .GitHub p {
     color: rgba(255,255,255,0.849);
@@ -296,4 +298,17 @@ h3{
     border-radius: 20px;
     max-width: 950px;
     position: center;
+}
+
+/*Soll-Ist Vergleich*/
+#SollIst{
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto; 
+}
+#SollIst h3 {
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 60px;
+    font-size: 27.5px;
 }
