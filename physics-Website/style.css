@@ -312,3 +312,93 @@ h3{
     margin-top: 60px;
     font-size: 27.5px;
 }
+.FileOpen h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+/* #image1 img{
+    margin-top: 10px;
+    border-radius: 20px;
+    max-width: 450px;
+    margin-bottom: 20px;
+}
+#image2 img{
+    border-radius: 20px;
+    max-width: 800px;
+    margin-bottom: 30px;
+} */
+.FileOpen p{
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.pictures{
+    margin-left: auto;
+    margin-right: auto; 
+    --gap: 20px;
+    --num-cols: 2;
+    --row-height: 432px;
+
+    box-sizing: border-box;
+    padding: var(--gap);
+
+    display: grid;
+    grid-template-columns: repeat(var(--num-cols), 1fr);
+    grid-auto-rows: var(--row-height);
+    gap: var(--gap);
+}
+.pictures > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.pictures-col-2 {
+    grid-column: span 2;
+}
+.pictures-row-2 {
+    grid-row: span 2;
+}
+.Auslese h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.Auslese p{
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.Auslese img{
+    margin-top: 10px;
+    border-radius: 20px;
+    max-width: 950px;
+    position: center;
+}
+.Diagramme h4 {
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.Diagramme p {
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.Diagramme img {
+    margin-top: 10px;
+    border-radius: 20px;
+    max-width: 950px;
+    position: center;
+}
+
