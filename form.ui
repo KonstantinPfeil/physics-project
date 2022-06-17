@@ -191,7 +191,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Predictions</string>
+     <string>Fits</string>
     </property>
     <property name="checked">
      <bool>true</bool>

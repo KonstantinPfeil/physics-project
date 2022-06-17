@@ -5,7 +5,7 @@
 # Copyright © 2022 by SRE
 
 import os
-import sys
+import sys, shutil
 
 from PySide6.QtUiTools import loadUiType
 from PySide6 import QtCore as Core
@@ -35,6 +35,12 @@ class MainWindow(Base, Form):
         self.checkBox_2.stateChanged.connect(lambda: self.diagramm2.setVisible(self.checkBox_2.isChecked()))
         self.checkBox_3.stateChanged.connect(lambda: self.diagramm3.setVisible(self.checkBox_3.isChecked()))
         self.checkbox_grid.stateChanged.connect(lambda: self.setGirdVis(self.checkbox_grid.isChecked()))
+        self.checkBox_formeln.stateChanged.connect(lambda: self.setSerVis(self.checkBox_formeln.isChecked()))
+
+    def setSerVis(self, vis: bool):
+        self.diagramm1.chart().setSeriesVis(1, vis)
+        self.diagramm2.chart().setSeriesVis(1, vis)
+        self.diagramm3.chart().setSeriesVis(1, vis)
 
     def setGirdVis(self, vis: bool):
         self.diagramm1.chart().setGridVis(vis)
@@ -44,16 +50,15 @@ class MainWindow(Base, Form):
     def setDiagrams(self):
         calculation = calculate()
         if calculation is not None:
-            t, s, v, a, ps, pv, aa = calculation
-            # ta = [(t, a) for t, a in zip(t, a) if a is not None]
+            t, s, v, a, ps, pv, aa, paras_s, paras_v, paras_a = calculation
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
             self.diagramm1.setChart(
                 Chart(
                     [
                         ScatterSeries("t-s", zip(t, s)),
-                        SplineSeries("prediction", zip(t, ps))
+                        SplineSeries("fit", zip(t, ps))
                     ],
-                    "t-s"
+                    "t-s", "t in s", "s in m"
                 )
             )
             self.diagramm2.setRenderHint(QPainter.Antialiasing)
@@ -61,9 +66,9 @@ class MainWindow(Base, Form):
                 Chart(
                     [
                         ScatterSeries("t-v", zip(t, v)),
-                        SplineSeries("prediction", zip(t, pv))
+                        SplineSeries("fit", zip(t, pv))
                     ],
-                    "t-v"
+                    "t-v", "t in s", "v in m/s"
                 )
             )
             self.diagramm3.setRenderHint(QPainter.Antialiasing)
@@ -71,9 +76,9 @@ class MainWindow(Base, Form):
                 Chart(
                     [
                         ScatterSeries("t-a", zip(t, a)),
-                        SplineSeries("mean acceleration", zip(t, aa))
+                        SplineSeries(f"average acceleration", zip(t, aa))
                     ],
-                    "t-a"
+                    "t-a", "t in s", 'a in m/s²'
                 )
             )
         else:
@@ -82,7 +87,10 @@ class MainWindow(Base, Form):
     def openFile(self):
         path = QFileDialog. \
             getOpenFileName(self, "Open Data File exel/csv",
-                            filter="Tabel Files (*.xlsx *.csv);; All Files (*.*)")[0]
+                            filter="Standard(*.xlsx *.csv *.txt);; Tabel Files (*.xlsx *.csv);; All Files (*.*)")[0]
+        if path.endswith(".txt"):
+            shutil.copy(path, os.path.dirname(os.path.abspath(__file__)))
+            return
         try:
             readFromFile(path)
         except Exception as e:
