@@ -258,7 +258,7 @@ h3{
     color: rgb(187,178,233);
     font-family: sans-serif;
     margin-top: 30px;
-    font-size: 25px;
+    font-size: 22.5px;
 }
 .Trello p {
     color: rgba(255,255,255,0.849);
@@ -316,7 +316,7 @@ h3{
     color: rgb(187,178,233);
     font-family: sans-serif;
     margin-top: 30px;
-    font-size: 25px;
+    font-size: 22.5px;
 }
 .FileOpen p{
     color: rgba(255,255,255,0.849);
@@ -349,7 +349,7 @@ h3{
     color: rgb(187,178,233);
     font-family: sans-serif;
     margin-top: 30px;
-    font-size: 25px;
+    font-size: 22.5px;
 }
 .Auslese p{
     color: rgba(255,255,255,0.849);
@@ -368,7 +368,7 @@ h3{
     color: rgb(187,178,233);
     font-family: sans-serif;
     margin-top: 30px;
-    font-size: 25px;
+    font-size: 22.5px;
 }
 .Diagramme p {
     color: rgba(255,255,255,0.849);
@@ -387,7 +387,7 @@ h3{
     color: rgb(187,178,233);
     font-family: sans-serif;
     margin-top: 30px;
-    font-size: 25px;
+    font-size: 22.5px;
 }
 .varibleCharts p{
     color: rgba(255,255,255,0.849);
@@ -401,4 +401,25 @@ h3{
     border-radius: 12.5px;
     max-width: 950px;
     position: center;
+}
+.Reflektion {
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+.Reflektion p {
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.Footer p{
+    margin-top: 175px;
+    text-align: center;
+    color: rgba(187, 178, 233,0.75);
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-family: sans-serif;
 }
