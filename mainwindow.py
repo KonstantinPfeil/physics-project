@@ -51,7 +51,7 @@ class MainWindow(Base, Form):
         calculation = calculate()
         if calculation is not None:
             t, s, v, a, ps, pv, aa, paras_s, paras_v, paras_a = calculation
-            self.lbl_1.setText(f"y = {paras_s[0]}x²+ {paras_s[1]}x + {paras_s[2]}")
+            self.lbl_1.setText(f"y = {paras_s[0]}x² + {paras_s[1]}x + {paras_s[2]}")
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
             self.diagramm1.setChart(
                 Chart(
