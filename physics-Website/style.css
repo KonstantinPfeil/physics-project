@@ -272,7 +272,7 @@ h3{
 }
 .Trello img{
     margin-top: 10px;
-    border-radius: 20px;
+    border-radius: 12.5px;
     max-width: 950px;
     position: center;
     margin-bottom: 30px;
@@ -295,7 +295,7 @@ h3{
 }
 .GitHub img{
     margin-top: 10px;
-    border-radius: 20px;
+    border-radius: 12.5px;
     max-width: 950px;
     position: center;
 }
@@ -311,4 +311,94 @@ h3{
     font-family: sans-serif;
     margin-top: 60px;
     font-size: 27.5px;
+}
+.FileOpen h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.FileOpen p{
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.pictures{
+    display: flex;
+}
+.pic1{
+    flex:0 0 340px;
+    margin-top: 10px;
+}
+.pic1 img{
+    border-radius: 12.5px;
+    max-width: 100%;
+}
+.pic2{
+    flex: 0 0 590px;
+    margin-top: 10px;
+    padding-left: 20px;
+}
+.pic2 img{
+    border-radius: 12.5px;
+    max-width: 100%;
+}
+.Auslese h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.Auslese p{
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.Auslese img{
+    margin-top: 10px;
+    border-radius: 12.5px;
+    max-width: 950px;
+    position: center;
+}
+.Diagramme h4 {
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.Diagramme p {
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.Diagramme img {
+    margin-top: 10px;
+    border-radius: 12.5px;
+    max-width: 950px;
+    position: center;
+}
+.varibleCharts h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 25px;
+}
+.varibleCharts p{
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.varibleCharts img{
+    margin-top: 10px;
+    border-radius: 12.5px;
+    max-width: 950px;
+    position: center;
 }

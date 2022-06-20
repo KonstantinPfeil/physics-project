@@ -5,7 +5,7 @@
 # Copyright © 2022 by SRE
 
 import os
-import sys
+import sys, shutil
 
 from PySide6.QtUiTools import loadUiType
 from PySide6 import QtCore as Core
@@ -87,7 +87,10 @@ class MainWindow(Base, Form):
     def openFile(self):
         path = QFileDialog. \
             getOpenFileName(self, "Open Data File exel/csv",
-                            filter="Tabel Files (*.xlsx *.csv);; All Files (*.*)")[0]
+                            filter="Standard(*.xlsx *.csv *.txt);; Tabel Files (*.xlsx *.csv);; All Files (*.*)")[0]
+        if path.endswith(".txt"):
+            shutil.copy(path, os.path.dirname(os.path.abspath(__file__)))
+            return
         try:
             readFromFile(path)
         except Exception as e:

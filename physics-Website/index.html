@@ -1,134 +1,190 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Physics Project</title>
-        <link rel="stylesheet" href="style.css">
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script defer src="charts.js"></script>
-        <script src="BackToTop_script.js"></script>
-    </head>
-    <body>
-<!-- back to top button -->
-        <div id="progress">
-            <span id="progress-value">&#8593</span>
-        </div>
-<!-- Topscreen -->
-        <section class= "header">
-            <nav>
-                <a href="index.html"></a>
-                <div class="links" id="navlinks">
-                    <ul>
-                        <li><a href="#ContentBox" >AUFGABE</a></li>
-                        <li><a href="#TEAM" >TEAM</a></li>
-                        <li><a href="#Planung" >PLANUNG</a></li>
-                        <li><a href="#SollIst" >SOLL-IST</a></li>
-                        <li><a href="#reflektion" >REFLEKTION</a></li>
-                    </ul>
-                </div>
-            </nav>
+
+<head>
+    <title>Physics Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="charts.js"></script>
+    <script src="BackToTop_script.js"></script>
+</head>
+
+<body>
+    <!-- back to top button -->
+    <div id="progress">
+        <span id="progress-value">&#8593</span>
+    </div>
+    <!-- Topscreen -->
+    <section class="header">
+        <nav>
+            <a href="index.html"></a>
+            <div class="links" id="navlinks">
+                <ul>
+                    <li><a href="#ContentBox">AUFGABE</a></li>
+                    <li><a href="#TEAM">TEAM</a></li>
+                    <li><a href="#Planung">PLANUNG</a></li>
+                    <li><a href="#SollIst">SOLL-IST</a></li>
+                    <li><a href="#reflektion">REFLEKTION</a></li>
+                </ul>
+            </div>
+        </nav>
         <div class="text-box">
             <h1>Rohdaten Auswertung</h1>
             <small>von xlsx/csv Datein mit python</small>
             <br>
-            <a href="https://github.com/KonstantinPfeil/physics-project.git"><button type="button">clone Git</button></a>
+            <a href="https://github.com/KonstantinPfeil/physics-project.git"><button type="button">clone
+                    Git</button></a>
         </div>
-        </section>
-<!-- Aufgabe & Umfeld -->
-        <section id="ContentBox">
-            <div class="TaskBox">
-                <div class="TaskText">
-                    <h2>Aufgabe</h2>
-                    <p>Automatisierte Auswertung der Rohdaten zur Bestätigung der gleichmäßigen beschleunigten Bewegung im Physik Praktikum in 2 Phasen. <br>Erste Phase: Extrahierung der Zeit-Datenreihe aus Datenbereich(DataFrame) und speicherung als Text-Datei <br>Zweite Phase: Auswertung als Diagrammdarstellung mit s, v und a von t</p>
+    </section>
+    <!-- Aufgabe & Umfeld -->
+    <section id="ContentBox">
+        <div class="TaskBox">
+            <div class="TaskText">
+                <h2>Aufgabe</h2>
+                <p>Automatisierte Auswertung der Rohdaten zur Bestätigung der gleichmäßigen beschleunigten Bewegung im
+                    Physik Praktikum in 2 Phasen. <br>Erste Phase: Extrahierung der Zeit-Datenreihe aus
+                    Datenbereich(DataFrame) und speicherung als Text-Datei <br>Zweite Phase: Auswertung als
+                    Diagrammdarstellung mit s, v und a von t</p>
+            </div>
+        </div>
+        <div>
+            <canvas id="chartTS"></canvas>
+            <canvas id="chartTV"></canvas>
+            <canvas id="chartTA"></canvas>
+            <input type="file" id="fileupload" />
+        </div>
+    </section>
+    <div class="projektumfeld">
+        <h3>Projektumfeld</h3>
+        <div class="umfeld">
+            <p>Vor einigen Wochen nahmen wir in Physik an einem Wissenschaftliches Praktikum teil. In diesem Praktikum
+                führten wir ein Experiment zum Nachweiß gleichmäßiger beschleunigter Bewegung durch. Zur Auswertung und
+                Daten-aufnahme wurde Microsoft Excel auf einem iPad verwendet. In den letzten Jahren wurde dieses
+                Praktikum aber nur spezifisch in Physik durchgeführt und ausgewertet. Dieses Jahr wurde es nun
+                Fächerübergreifend gestaltet. Kombiniert wurde das Experiment mit dem Fach Informatiksysteme. Die
+                Übertragene Aufgabe in IS ist die Erstellung eines Programms, welches eine automatische Auswertung der
+                Rohdaten ermöglicht. Für die komplexe Ausarbeitung wurden Gruppen gebildet, die gemeinsam eine Lösung
+                des Problems erarbeiten</p>
+        </div>
+    </div>
+    </section>
+    <!-- Team -->
+    <section id="TEAM">
+        <div class="TeamBox">
+            <h3>Team</h3>
+            <div class="container">
+                <div class="card">
+                    <h3 class="title">Julius<br>Weißleder</h3>
+                    <div class="bar">
+                        <div class="emptybar"></div>
+                        <div class="filledbar"></div>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/Julius.jpg">
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="title">Felix<br>Wendt</h3>
+                    <div class="bar">
+                        <div class="emptybar"></div>
+                        <div class="filledbar"></div>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/Felix.jpg">
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="title">Konstantin<br>Pfeil</h3>
+                    <div class="bar">
+                        <div class="emptybar"></div>
+                        <div class="filledbar"></div>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/Konstantin.jpeg">
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="title">Christoph<br>Trischler</h3>
+                    <div class="bar">
+                        <div class="emptybar"></div>
+                        <div class="filledbar"></div>
+                    </div>
+                    <div class="avatar">
+                        <img src="images/fakeChristoph.jpg">
+                    </div>
                 </div>
             </div>
-            <div>
-                <canvas id="chartTS"></canvas>
-                <canvas id="chartTV"></canvas>
-                <canvas id="chartTA"></canvas>
-                <input type="file" id="fileupload" />
+        </div>
+    </section>
+    <!-- Plannung -->
+    <section id="Planung">
+        <div class="Planung">
+            <h3>Planung/ Organisation</h3>
+            <div class="Trello">
+                <h4>Trello</h4>
+                <p>Um unsere einzelnen Aufgaben in Meilensteine zu unterteilen nutzen wir das KANBAN-System. Dieses
+                    beschreibt die methode der Einteilung in die Bereiche ToDo, Doing und Done. Somit kann jeder die
+                    Übersicht über unser Projekt behalten und sieht aus Anhieb den fortschritt der Gruppe. Zur perfekten
+                    Umsetzung von diesem System haben wir uns für die Website <a
+                        href="https://trello.com/de/tour">Trello</a> entschieden.</p>
+                <img src="images/Trello.jpg" alt="Trello">
             </div>
-        </section>
-            <div class="projektumfeld">
-                <h3>Projektumfeld</h3>
-                <div class="umfeld">
-                    <p>Vor einigen Wochen nahmen wir in Physik an einem Wissenschaftliches Praktikum teil. In diesem Praktikum führten wir ein Experiment zum Nachweiß gleichmäßiger beschleunigter Bewegung durch. Zur Auswertung und Daten-aufnahme wurde Microsoft Excel auf einem iPad verwendet. In den letzten Jahren wurde dieses Praktikum aber nur spezifisch in Physik durchgeführt und ausgewertet. Dieses Jahr wurde es nun Fächerübergreifend gestaltet. Kombiniert wurde das Experiment mit dem Fach Informatiksysteme. Die Übertragene Aufgabe in IS ist die Erstellung eines Programms, welches eine automatische Auswertung der Rohdaten ermöglicht. Für die komplexe Ausarbeitung wurden Gruppen gebildet, die gemeinsam eine Lösung des Problems erarbeiten</p>
+            <div class="GitHub">
+                <h4>GitHub</h4>
+                <p>Um unsere Fortschritte zu speichern und für alle aus dem Team erreichbar zu machen, nutzen wir <a
+                        href="https://github.com/">GitHub</a>. GitHub ist ein webbasierter Filehosting-Service für
+                    Softwareentwicklung. Dieser ermöglicht es uns zudem gemeinsam von unseren privaten Computern an den
+                    selbem Projekt zu arbeiten und den jeweiligen Code sehr einfach zwischen einander auszutauschen bzw.
+                    zu kombinieren.</p>
+                <img src="images/GitHub.png" alt="GitHub">
+            </div>
+        </div>
+    </section>
+    <!-- Soll-Ist Vergleich -->
+    <section id="SollIst">
+        <h3>Soll-Ist Vergleich</h3>
+        <div class="FileOpen">
+            <h4>File Open</h4>
+            <p>Unser Programm soll eine neue Datei einfügen und somit als Input nutzen können. Um auch andere
+                Rohdatensätze als Diagramme darzustellen.<br>Dieses Ziel wurde erfolgreich erreicht. Bei Betätigung von
+                "open" öffnet sich der Dateimanager (Explorer/Finder).</p>
+            <div class="pictures">
+                <div class="pic1">
+                    <img src="images/openFile3.jpeg">
+                </div>
+                <div class="pic2">
+                    <img src="images/openFile2.jpeg">
                 </div>
             </div>
-        </section>
-<!-- Team -->
-            <section id="TEAM">
-                <div class="TeamBox">
-                    <h3>Team</h3>
-                    <div class="container">
-                        <div class="card">
-                          <h3 class="title">Julius<br>Weißleder</h3>
-                          <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                          </div>
-                          <div class="avatar">
-                            <img src="images/Julius.jpg">
-                        </div>
-                        </div>
-                        <div class="card">
-                          <h3 class="title">Felix<br>Wendt</h3>
-                          <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                          </div>
-                          <div class="avatar">
-                            <img src="images/Felix.jpg">
-                        </div>
-                        </div>
-                        <div class="card">
-                          <h3 class="title">Konstantin<br>Pfeil</h3>
-                          <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                          </div>
-                          <div class="avatar">
-                            <img src="images/Konstantin.jpeg">
-                        </div>
-                        </div>
-                        <div class="card">
-                          <h3 class="title">Christoph<br>Trischler</h3>
-                          <div class="bar">
-                            <div class="emptybar"></div>
-                            <div class="filledbar"></div>
-                          </div>
-                          <div class="avatar">
-                            <img src="images/fakeChristoph.jpg">
-                        </div>
-                        </div>
-                      </div>
-                </div>
-            </section>
-<!-- Plannung -->
-           <section id="Planung">
-            <div class="Planung">
-                <h3>Planung/ Organisation</h3>
-                <div class="Trello">
-                    <h4>Trello</h4>
-                    <p>Um unsere einzelnen Aufgaben in Meilensteine zu unterteilen nutzen wir das KANBAN-System. Dieses beschreibt die methode der Einteilung in die Bereiche ToDo, Doing und Done. Somit kann jeder die Übersicht über unser Projekt behalten und sieht aus Anhieb den fortschritt der Gruppe. Zur perfekten Umsetzung von diesem System haben wir uns für die Website <a href="https://trello.com/de/tour">Trello</a> entschieden.</p>
-                    <img src="images/Trello.jpg" alt="Trello">
-                </div>
-                <div class="GitHub">
-                    <h4>GitHub</h4>
-                    <p>Um unsere Fortschritte zu speichern und für alle aus dem Team erreichbar zu machen, nutzen wir <a href="https://github.com/">GitHub</a>. GitHub ist ein webbasierter Filehosting-Service für Softwareentwicklung. Dieser ermöglicht es uns zudem gemeinsam von unseren privaten Computern an den selbem Projekt zu arbeiten und den jeweiligen Code sehr einfach zwischen einander auszutauschen bzw. zu kombinieren.</p>
-                    <img src="images/GitHub.png" alt="GitHub">
-                </div>
-             </div>  
-           </section>
-<!-- Soll-Ist Vergleich -->
-           <section id="SollIst">
-                <h3>Soll-Ist Vergleich</h3>
-                
-           </section>
-           <section id="reflektion">
+        </div>
+        <div class="Auslese">
+            <h4>Automatische Auslesung</h4>
+            <p>Anschließend soll das entwickelte Programm die importierten .csv oder .xlxs Dateien auslesen können um
+                diese selbständig ermittelten Werte im Mainwindow in Form von Diagrammen auswerten zu können. </p>
+            <img src="images/Auslesepy.png" alt="CodeAuslese">
+        </div>
+        <div class="Diagramme">
+            <h4>Diagramme direkt in FormUI</h4>
+            <p>Unser Ziel war nicht nur, dass die Daten in Diagrammen angezeigt werden sondern zudem diese direkt in der
+                FormUI integriert sind. Dies war etwas komplexer umzusetzen aber wir haben es dennoch nach unseren
+                Wünschen implementiert bekommen. <br>Der Code der dies ermöglicht ist hier ersichtlich:</p>
+            <img src="images/chartspy.png" alt="CodeDiagramme">
+            <p>resultierende Ausgabe:</p>
+            <div class="imageDiagramme">
+                <img src="images/FormUIDiagramme.png" alt="FormUIDiagramme">
+            </div>
+        </div>
+        <div class="varibleCharts">
+            <h4>Variable Darstellung der Diagramme</h4>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <img src="images/varibleCharts.png" alt="varibleCharts">
+        </div>
+    </section>
+    <section id="reflektion">
+        <div class="Reflektion">
 
-        </section>
-     
-        </section>
-    </body>
+        </div>
+    </section>
+</body>
+
 </html>
-       
