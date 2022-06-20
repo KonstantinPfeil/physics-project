@@ -364,6 +364,25 @@ h3{
     max-width: 950px;
     position: center;
 }
+.calculate h4{
+    color: rgb(187,178,233);
+    font-family: sans-serif;
+    margin-top: 30px;
+    font-size: 22.5px;
+}
+.calculate p{
+    color: rgba(255,255,255,0.849);
+    font-size: 17px;
+    line-height: 25px;
+    font-family: sans-serif;
+    margin-top: 5px;
+}
+.calculate img {
+    margin-top: 10px;
+    border-radius: 12.5px;
+    max-width: 950px;
+    position: center;
+}
 .Diagramme h4 {
     color: rgb(187,178,233);
     font-family: sans-serif;
