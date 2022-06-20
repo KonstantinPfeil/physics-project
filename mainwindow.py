@@ -5,21 +5,28 @@
 # Copyright © 2022 by SRE
 
 import os
-import sys, shutil
+import shutil
+import sys
 
-from PySide6.QtUiTools import loadUiType
 from PySide6 import QtCore as Core
 from PySide6 import QtWidgets
-from PySide6.QtGui import QPainter, QShortcut, QKeySequence, QBrush, QColor
+from PySide6.QtWidgets import QWidget
+from PySide6.QtGui import QPainter, QShortcut, QKeySequence
+from PySide6.QtUiTools import loadUiType
 from PySide6.QtWidgets import QFileDialog
 
-from diagram import calculate
 from auslesen import readFromFile
 from chart import Chart, SplineSeries, ScatterSeries
+from diagram import calculate
 
 UIFilename = "form.ui"
 ProjectDir = os.path.dirname(os.path.abspath(__file__))
 Form, Base = loadUiType(os.path.join(ProjectDir, UIFilename))
+
+
+def visibility(vis: bool, *widgets: QWidget):
+    for w in widgets:
+        w.setVisible(vis)
 
 
 class MainWindow(Base, Form):
@@ -31,9 +38,9 @@ class MainWindow(Base, Form):
         self.openSC = QShortcut(QKeySequence("Ctrl+o"), self)  # shortcut for fileopen
         self.openSC.activated.connect(self.openFile)
         # connect Visible of diagrams to the checkboxes
-        self.checkBox_1.stateChanged.connect(lambda: self.diagramm1.setVisible(self.checkBox_1.isChecked()))
-        self.checkBox_2.stateChanged.connect(lambda: self.diagramm2.setVisible(self.checkBox_2.isChecked()))
-        self.checkBox_3.stateChanged.connect(lambda: self.diagramm3.setVisible(self.checkBox_3.isChecked()))
+        self.checkBox_1.stateChanged.connect(lambda:visibility(self.checkBox_1.isChecked(), self.diagramm1, self.lbl_1))
+        self.checkBox_2.stateChanged.connect(lambda:visibility(self.checkBox_2.isChecked(), self.diagramm2, self.lbl_2))
+        self.checkBox_3.stateChanged.connect(lambda:visibility(self.checkBox_3.isChecked(), self.diagramm3, self.lbl_3))
         self.checkbox_grid.stateChanged.connect(lambda: self.setGirdVis(self.checkbox_grid.isChecked()))
         self.checkBox_formeln.stateChanged.connect(lambda: self.setSerVis(self.checkBox_formeln.isChecked()))
 
@@ -91,11 +98,11 @@ class MainWindow(Base, Form):
         path = QFileDialog. \
             getOpenFileName(self, "Open Data File exel/csv",
                             filter="Standard(*.xlsx *.csv *.txt);; Tabel Files (*.xlsx *.csv);; All Files (*.*)")[0]
-        if path.endswith(".txt"):
-            shutil.copy(path, os.path.dirname(os.path.abspath(__file__)))
-            return
         try:
-            readFromFile(path)
+            if path.endswith(".txt"):
+                shutil.copy(path, os.path.dirname(os.path.abspath(__file__)))
+            else:
+                readFromFile(path)
         except Exception as e:
             print(e)
             print("wrong file")

@@ -1,5 +1,6 @@
 from PySide6.QtCharts import QChart, QScatterSeries, QSplineSeries, QXYSeries, QValueAxis
 from PySide6.QtCore import QPointF, Qt
+from PySide6.QtWidgets import QLabel
 from PySide6.QtGui import QBrush, QFont
 
 
@@ -27,6 +28,10 @@ class Chart(QChart):
     def setGridVis(self, vis: bool):
         for a in self.axes():
             a.setGridLineVisible(vis)
+
+    def setVisible(self, visible: bool, lbl: QLabel) -> None:
+        super(Chart, self).setVisible(visible)
+        lbl.setVisible(visible)
 
 
 class SplineSeries(QSplineSeries):
