@@ -51,6 +51,7 @@ class MainWindow(Base, Form):
         calculation = calculate()
         if calculation is not None:
             t, s, v, a, ps, pv, aa, paras_s, paras_v, paras_a = calculation
+            self.lbl_1.setText(f"y = {paras_s[0]}x²+ {paras_s[1]}x + {paras_s[2]}")
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
             self.diagramm1.setChart(
                 Chart(
@@ -61,6 +62,7 @@ class MainWindow(Base, Form):
                     "t-s", "t in s", "s in m"
                 )
             )
+            self.lbl_1.setText(f"y = {paras_v[0]}x + {paras_v[1]}")
             self.diagramm2.setRenderHint(QPainter.Antialiasing)
             self.diagramm2.setChart(
                 Chart(
@@ -71,6 +73,7 @@ class MainWindow(Base, Form):
                     "t-v", "t in s", "v in m/s"
                 )
             )
+            self.lbl_1.setText(f"y = {paras_a[0]}")
             self.diagramm3.setRenderHint(QPainter.Antialiasing)
             self.diagramm3.setChart(
                 Chart(
@@ -107,3 +110,9 @@ if __name__ == "__main__":
     widget.show()
 
     sys.exit(app.exec())
+
+#!/usr/bin/python3
+
+# This Python file uses the following encoding: utf-8
+# main_widget.py BSZET-DD Template
+# Copyright © 2022 by SRE
