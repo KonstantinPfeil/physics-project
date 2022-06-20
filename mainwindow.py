@@ -62,7 +62,7 @@ class MainWindow(Base, Form):
                     "t-s", "t in s", "s in m"
                 )
             )
-            self.lbl_1.setText(f"y = {paras_v[0]}x + {paras_v[1]}")
+            self.lbl_2.setText(f"y = {paras_v[0]}x + {paras_v[1]}")
             self.diagramm2.setRenderHint(QPainter.Antialiasing)
             self.diagramm2.setChart(
                 Chart(
@@ -73,7 +73,7 @@ class MainWindow(Base, Form):
                     "t-v", "t in s", "v in m/s"
                 )
             )
-            self.lbl_1.setText(f"y = {paras_a[0]}")
+            self.lbl_3.setText(f"y = {paras_a[0]}")
             self.diagramm3.setRenderHint(QPainter.Antialiasing)
             self.diagramm3.setChart(
                 Chart(
