@@ -275,7 +275,7 @@ color: rgb(255, 255, 255);</string>
    </widget>
    <widget class="QMenu" name="menuinfo">
     <property name="title">
-     <string>info</string>
+     <string>Projekt</string>
     </property>
     <addaction name="actionProjekt"/>
    </widget>
@@ -297,7 +297,7 @@ color: rgb(255, 255, 255);</string>
   </action>
   <action name="actionProjekt">
    <property name="text">
-    <string>Projekt</string>
+    <string>Informationen</string>
    </property>
   </action>
   <action name="actioninfo_Website">
