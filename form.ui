@@ -277,6 +277,7 @@ color: rgb(255, 255, 255);</string>
     <property name="title">
      <string>info</string>
     </property>
+    <addaction name="actionProjekt"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuinfo"/>
@@ -287,6 +288,21 @@ color: rgb(255, 255, 255);</string>
    </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionProjektinformationen">
+   <property name="text">
+    <string>Projektinformationen</string>
+   </property>
+  </action>
+  <action name="actionProjekt">
+   <property name="text">
+    <string>Projekt</string>
+   </property>
+  </action>
+  <action name="actioninfo_Website">
+   <property name="text">
+    <string>info-Website</string>
    </property>
   </action>
  </widget>
