@@ -264,7 +264,7 @@ color: rgb(255, 255, 255);</string>
      <x>0</x>
      <y>0</y>
      <width>1176</width>
-     <height>25</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -273,7 +273,13 @@ color: rgb(255, 255, 255);</string>
     </property>
     <addaction name="actionOpen"/>
    </widget>
+   <widget class="QMenu" name="menuinfo">
+    <property name="title">
+     <string>info</string>
+    </property>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuinfo"/>
   </widget>
   <action name="actionOpen">
    <property name="text">
