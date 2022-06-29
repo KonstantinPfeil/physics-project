@@ -11,10 +11,9 @@ let calcScrollValue = () => {
     } else {
       scrollProgress.style.display = "none";
     }
-    scrollProgress.addEventListener("click", () => {
-      document.documentElement.scrollTop = 0;
-    });
     scrollProgress.style.background = `conic-gradient(#bbb2e9 ${scrollValue}%, #3b3349 ${scrollValue}%)`;
   };
   window.onscroll = calcScrollValue;
   window.onload = calcScrollValue;
+  scrollProgress.addEventListener("click", () => {
+      document.documentElement.scrollTop = 0;});
