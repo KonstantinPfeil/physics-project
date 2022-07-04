@@ -9,15 +9,17 @@ import shutil
 import sys
 
 from PySide6 import QtCore as Core
+from PySide6.QtCore import QUrl
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QWidget
-from PySide6.QtGui import QPainter, QShortcut, QKeySequence
+from PySide6.QtGui import QPainter, QShortcut, QKeySequence, QDesktopServices
 from PySide6.QtUiTools import loadUiType
 from PySide6.QtWidgets import QFileDialog
 
 from auslesen import readFromFile
 from chart import Chart, SplineSeries, ScatterSeries
 from diagram import calculate
+from windows import Settings, showInprint
 
 UIFilename = "form.ui"
 ProjectDir = os.path.dirname(os.path.abspath(__file__))
@@ -32,17 +34,30 @@ def visibility(vis: bool, *widgets: QWidget):
 class MainWindow(Base, Form):
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
+        self.distance: float = 0.2
+        self.settings = Settings(self.setDistance)
         self.setupUi(self)
-        self.setDiagrams()
         self.actionOpen.triggered.connect(self.openFile)  # option file open
         self.openSC = QShortcut(QKeySequence("Ctrl+o"), self)  # shortcut for fileopen
         self.openSC.activated.connect(self.openFile)
+        # self.actionSettings.triggerred.connect(lambda: self.settings.show()) todo create action Settings
+        # self.actionDocu.triggerred.connect(lambda: QDesktopServices.openUrl(QUrl("https://bszet-ig21.github.io")))
+        # todo create action Docu
+        # self.actionInpress.triggerred.connect(lambda : todo
         # connect Visible of diagrams to the checkboxes
-        self.checkBox_1.stateChanged.connect(lambda:visibility(self.checkBox_1.isChecked(), self.diagramm1, self.lbl_1))
-        self.checkBox_2.stateChanged.connect(lambda:visibility(self.checkBox_2.isChecked(), self.diagramm2, self.lbl_2))
-        self.checkBox_3.stateChanged.connect(lambda:visibility(self.checkBox_3.isChecked(), self.diagramm3, self.lbl_3))
+        self.checkBox_1.stateChanged\
+            .connect(lambda: visibility(self.checkBox_1.isChecked(), self.diagramm1, self.lbl_1))
+        self.checkBox_2.stateChanged\
+            .connect(lambda: visibility(self.checkBox_2.isChecked(), self.diagramm2, self.lbl_2))
+        self.checkBox_3.stateChanged\
+            .connect(lambda: visibility(self.checkBox_3.isChecked(), self.diagramm3, self.lbl_3))
         self.checkbox_grid.stateChanged.connect(lambda: self.setGirdVis(self.checkbox_grid.isChecked()))
         self.checkBox_formeln.stateChanged.connect(lambda: self.setSerVis(self.checkBox_formeln.isChecked()))
+        self.setDiagrams()
+        showInprint(self)
+
+    def setDistance(self, distance: int):
+        self.distance = distance
 
     def setSerVis(self, vis: bool):
         self.diagramm1.chart().setSeriesVis(1, vis)
@@ -55,40 +70,40 @@ class MainWindow(Base, Form):
         self.diagramm3.chart().setGridVis(vis)
 
     def setDiagrams(self):
-        calculation = calculate()
+        calculation = calculate(self.distance)
         if calculation is not None:
             t, s, v, a, ps, pv, aa, paras_s, paras_v, paras_a = calculation
-            self.lbl_1.setText(f"y = {paras_s[0]}x² + {paras_s[1]}x + {paras_s[2]}")
+            self.lbl_1.setText(f"y = {paras_s[0]}x² + {paras_s[1]}x + {paras_s[2]}\na={paras_s[0]*2}")
             self.diagramm1.setRenderHint(QPainter.Antialiasing)
             self.diagramm1.setChart(
                 Chart(
                     [
-                        ScatterSeries("t-s", zip(t, s)),
+                        ScatterSeries("s-t", zip(t, s)),
                         SplineSeries("fit", zip(t, ps))
                     ],
-                    "t-s", "t in s", "s in m"
+                    "s-t", "t in s", "s in m"
                 )
             )
-            self.lbl_2.setText(f"y = {paras_v[0]}x + {paras_v[1]}")
+            self.lbl_2.setText(f"y = {paras_v[0]}x + {paras_v[1]}\na={paras_v[0]}")
             self.diagramm2.setRenderHint(QPainter.Antialiasing)
             self.diagramm2.setChart(
                 Chart(
                     [
-                        ScatterSeries("t-v", zip(t, v)),
+                        ScatterSeries("v-t", zip(t, v)),
                         SplineSeries("fit", zip(t, pv))
                     ],
-                    "t-v", "t in s", "v in m/s"
+                    "v-t", "t in s", "v in m/s"
                 )
             )
-            self.lbl_3.setText(f"y = {paras_a[0]}")
+            self.lbl_3.setText(f"y = {paras_a[0]}\na={paras_a[0]}")
             self.diagramm3.setRenderHint(QPainter.Antialiasing)
             self.diagramm3.setChart(
                 Chart(
                     [
-                        ScatterSeries("t-a", zip(t, a)),
+                        ScatterSeries("a-t", zip(t, a)),
                         SplineSeries(f"average acceleration", zip(t, aa))
                     ],
-                    "t-a", "t in s", 'a in m/s²'
+                    "a-t", "t in s", 'a in m/s²'
                 )
             )
         else:
@@ -117,9 +132,3 @@ if __name__ == "__main__":
     widget.show()
 
     sys.exit(app.exec())
-
-#!/usr/bin/python3
-
-# This Python file uses the following encoding: utf-8
-# main_widget.py BSZET-DD Template
-# Copyright © 2022 by SRE

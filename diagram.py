@@ -5,7 +5,7 @@ import numpy as np
 from typing import List, Optional
 
 
-def calculate(times: Optional[List[float]] = None):
+def calculate(distance: float, times: Optional[List[float]] = None):
     if times is None:
         try:
             with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
@@ -17,23 +17,23 @@ def calculate(times: Optional[List[float]] = None):
             print("no times in mtimes.txt")
             return None
     times = np.asarray(times)
-    weg = np.linspace(0, 2, len(times) + 1)
+    weg = np.linspace(0, distance * len(times), len(times) + 1)
 
     timeDifferences = np.diff(times)
 
-    speeds = 0.2 / timeDifferences
+    speeds = distance / timeDifferences
     speedDifferences = np.diff(speeds)
     averageDeltaTime = timeDifferences[:-1] / 2 + timeDifferences[1:] / 2
 
     accelerations = speedDifferences / averageDeltaTime
     averageAcceleration = np.average(accelerations)
 
-    firstTime = np.sqrt(0.4 / accelerations[0])
+    firstTime = np.sqrt(distance*2 / accelerations[0])
     times = times - times[0] + firstTime
     times = np.insert(times, 0, 0)
 
     # first and second speed
-    speeds = np.insert(speeds, 0, 0.2 / firstTime)
+    speeds = np.insert(speeds, 0, distance / firstTime)
     speeds = np.insert(speeds, 0, 0)  # zero point
 
     for i in range(3):
@@ -58,7 +58,7 @@ def scatter(name: str, x, y, c: Optional[str] = None, size: Optional[int] = None
 
 
 if __name__ == "__main__":
-    calculation = calculate()
+    calculation = calculate(0.2)
     if calculation is not None:
         t, s, v, a, ps, pv, aa = calculation
         scatter("t in s-s in m", t, s)
