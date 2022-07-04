@@ -42,8 +42,7 @@ class MainWindow(Base, Form):
         self.openSC.activated.connect(self.openFile)
         # self.actionSettings.triggerred.connect(lambda: self.settings.show()) todo create action Settings
         # self.actionDocu.triggerred.connect(lambda: QDesktopServices.openUrl(QUrl("https://bszet-ig21.github.io")))
-        # todo create action Docu
-        # self.actionInpress.triggerred.connect(lambda : todo
+        self.actionProjekt.triggered.connect(lambda: showInprint(self))
         # connect Visible of diagrams to the checkboxes
         self.checkBox_1.stateChanged\
             .connect(lambda: visibility(self.checkBox_1.isChecked(), self.diagramm1, self.lbl_1))
@@ -53,8 +52,6 @@ class MainWindow(Base, Form):
             .connect(lambda: visibility(self.checkBox_3.isChecked(), self.diagramm3, self.lbl_3))
         self.checkbox_grid.stateChanged.connect(lambda: self.setGirdVis(self.checkbox_grid.isChecked()))
         self.checkBox_formeln.stateChanged.connect(lambda: self.setSerVis(self.checkBox_formeln.isChecked()))
-        self.setDiagrams()
-        showInprint(self)
 
     def setDistance(self, distance: int):
         self.distance = distance
