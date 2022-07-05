@@ -40,8 +40,8 @@ class MainWindow(Base, Form):
         self.actionOpen.triggered.connect(self.openFile)  # option file open
         self.openSC = QShortcut(QKeySequence("Ctrl+o"), self)  # shortcut for fileopen
         self.openSC.activated.connect(self.openFile)
-        # self.actionSettings.triggerred.connect(lambda: self.settings.show()) todo create action Settings
-        # self.actionDocu.triggerred.connect(lambda: QDesktopServices.openUrl(QUrl("https://bszet-ig21.github.io")))
+        self.actionSettings.triggered.connect(lambda: self.settings.show())
+        self.actionDocu.triggered.connect(lambda: QDesktopServices.openUrl(QUrl("https://bszet-ig21.github.io")))
         self.actionProjekt.triggered.connect(lambda: showInprint(self))
         # connect Visible of diagrams to the checkboxes
         self.checkBox_1.stateChanged\
@@ -55,6 +55,7 @@ class MainWindow(Base, Form):
 
     def setDistance(self, distance: int):
         self.distance = distance
+        self.setDiagrams()
 
     def setSerVis(self, vis: bool):
         self.diagramm1.chart().setSeriesVis(1, vis)

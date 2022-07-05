@@ -278,10 +278,22 @@ color: rgb(255, 255, 255);</string>
      <string>Projekt</string>
     </property>
     <addaction name="actionProjekt"/>
+    <addaction name="actionDocu"/>
+    <addaction name="actionSettings"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuinfo"/>
   </widget>
+  <action name="actionDocu">
+    <property name="text">
+        <string>Doku</string>
+    </property>
+  </action>
+  <action name="actionSettings">
+    <property name="text">
+        <string>Abstand</string>
+    </property>
+  </action>  
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>

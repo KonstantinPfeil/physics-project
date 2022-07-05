@@ -31,17 +31,17 @@ class Settings(QWidget):
     def sendReturn(self):
         try:
             self.returnFunc(float(self.distanceTextEdit.text()))
+            self.close()
+            self.distanceTextEdit.setText("")
         except ValueError:
             pass
-        self.close()
-        self.distanceTextEdit.setText("")
 
 
 def showInprint(parent):
     window = QWidget()
     parent.inprint = window
     window.setFixedSize(640, 360)
-    window.setWindowTitle("Inprint()")
+    window.setWindowTitle("Impressum")
     window.content = QLabel(window)
     window.content.resize(640, 360)
     with open("inprint.txt", "r") as f:
