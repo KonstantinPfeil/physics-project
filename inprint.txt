@@ -1,8 +1,19 @@
 Impint 
 
-IG21 BSZ-ET Dresden
-
+BSZ-ET Dresden
 Strehlener Platz 2, 01219 Dresden Germany 
-E-Mail: bszet@bszet.de
-Phone: 0351-4735-201
-Principal/Headmaster: Herr Bernd Petschke
+E-Mail:     bgy@bszet.de
+Phone:      0351-4735-201
+Principal:  Herr Bernd Petschke
+
+Class: IG21 
+Team members:
+    - Christoph Trischler 
+    - Konstantin Pfeil
+    - Karl Felix Wendt
+    - Juius Weißleder 
+working period:
+    June 28, 2022 - July 15, 2022
+school subjects:
+    - IT systems 
+    - physics 
