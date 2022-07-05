@@ -309,7 +309,7 @@ color: rgb(255, 255, 255);</string>
   </action>
   <action name="actionProjekt">
    <property name="text">
-    <string>Informationen</string>
+    <string>Impressum</string>
    </property>
   </action>
   <action name="actioninfo_Website">
