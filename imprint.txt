@@ -12,9 +12,13 @@ Principal:  Herr Bernd Petschke
 Class: IG21 
 Team members:
     - Christoph Trischler 
+        E-Mail: t21trischlerch@bszetdd.lernsax.de
     - Konstantin Pfeil
+        E-Mail: t21pfeilko@bszetdd.lernsax.de
     - Karl Felix Wendt
+        E-Mail: t21wendtka@bszetdd.lernsax.de
     - Juius Weissleder
+        E-Mail: t21weisslederju@bszetdd.lernsax.de
 working period:
     June 28, 2022 - July 15, 2022
 school subjects:
