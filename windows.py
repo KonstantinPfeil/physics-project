@@ -40,11 +40,11 @@ class Settings(QWidget):
 def showInprint(parent):
     window = QWidget()
     parent.inprint = window
-    window.setFixedSize(640, 360)
+    window.setFixedSize(450, 360)
     window.setWindowTitle("Impressum")
     window.content = QLabel(window)
-    window.content.resize(640, 360)
-    with open("inprint.txt", "r") as f:
+    window.content.resize(450, 360)
+    with open("imprint.txt", "r") as f:
         window.content.setText(f.read())
     window.content.show()
     window.show()

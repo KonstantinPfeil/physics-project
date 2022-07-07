@@ -1,4 +1,7 @@
-Impint 
+||============================||
+||   ||   |||\  /|||    ||..\\    ||..\\     ||   |||\ ||   NNNN  ||
+||   ||   ||  |||  ||    ||        || \\      ||   || \|||       ||       ||
+||============================||
 
 BSZ-ET Dresden
 Strehlener Platz 2, 01219 Dresden Germany 
@@ -11,7 +14,7 @@ Team members:
     - Christoph Trischler 
     - Konstantin Pfeil
     - Karl Felix Wendt
-    - Juius Weißleder 
+    - Juius Weissleder
 working period:
     June 28, 2022 - July 15, 2022
 school subjects:

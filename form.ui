@@ -111,7 +111,7 @@ color: rgb(187, 178, 233);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Diagramm t-s</string>
+     <string>Diagramm s-t</string>
     </property>
     <property name="checked">
      <bool>true</bool>
@@ -131,7 +131,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Diagramm t-v</string>
+     <string>Diagramm v-t</string>
     </property>
     <property name="checked">
      <bool>true</bool>
@@ -151,7 +151,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Diagramm t-a</string>
+     <string>Diagramm a-t</string>
     </property>
     <property name="checked">
      <bool>true</bool>

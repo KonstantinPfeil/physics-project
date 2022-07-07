@@ -5,17 +5,10 @@ import numpy as np
 from typing import List, Optional
 
 
-def calculate(distance: float, times: Optional[List[float]] = None):
-    if times is None:
-        try:
-            with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt")) as f:
-                times = json.loads(f.read())["times"]  # read times from file
-        except FileNotFoundError:
-            print("no mtimes.txt file \ntry auslesen.py")
-            return None
-        if not times:
-            print("no times in mtimes.txt")
-            return None
+def calculate(distance: float, times: List[float]):
+    if not times:
+        print("no times")
+        return None
     times = np.asarray(times)
     weg = np.linspace(0, distance * len(times), len(times) + 1)
 

@@ -3,7 +3,7 @@ import json
 import os
 
 
-def readFromFile(path: str, toFile: bool = True):
+def readFromFile(path: str):
     times = []
     if path.__contains__(".xlsx"): # check if it is a exel file
         file = pd.read_excel(path)  # read from exel
@@ -22,12 +22,6 @@ def readFromFile(path: str, toFile: bool = True):
                 # erkennung von Spitzen
                 times.append(time)  # hinzufügen der Zeit
                 positive = not positive # umkehren des Vorzeichen
-
-    if toFile:
-        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "mtimes.txt"), "w") as f:
-            f.write(
-                json.dumps(dict(times=times), indent=4)
-            )
     return times
 
 

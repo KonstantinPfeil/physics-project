@@ -40,7 +40,7 @@ class MainWindow(Base, Form):
         self.actionOpen.triggered.connect(self.openFile)  # option file open
         self.openSC = QShortcut(QKeySequence("Ctrl+o"), self)  # shortcut for fileopen
         self.openSC.activated.connect(self.openFile)
-        self.actionSettings.triggered.connect(lambda: self.settings.show())
+        self.actionSettings.triggered.connect(self.settings.show)
         self.actionDocu.triggered.connect(lambda: QDesktopServices.openUrl(QUrl("https://bszet-ig21.github.io")))
         self.actionProjekt.triggered.connect(lambda: showInprint(self))
         # connect Visible of diagrams to the checkboxes
@@ -52,6 +52,7 @@ class MainWindow(Base, Form):
             .connect(lambda: visibility(self.checkBox_3.isChecked(), self.diagramm3, self.lbl_3))
         self.checkbox_grid.stateChanged.connect(lambda: self.setGirdVis(self.checkbox_grid.isChecked()))
         self.checkBox_formeln.stateChanged.connect(lambda: self.setSerVis(self.checkBox_formeln.isChecked()))
+        self.times = []
 
     def setDistance(self, distance: int):
         self.distance = distance
@@ -68,7 +69,7 @@ class MainWindow(Base, Form):
         self.diagramm3.chart().setGridVis(vis)
 
     def setDiagrams(self):
-        calculation = calculate(self.distance)
+        calculation = calculate(self.distance, self.times)
         if calculation is not None:
             t, s, v, a, ps, pv, aa, paras_s, paras_v, paras_a = calculation
             self.lbl_1.setText(f"y = {paras_s[0]}x² + {paras_s[1]}x + {paras_s[2]}\na={paras_s[0]*2}")
@@ -112,10 +113,7 @@ class MainWindow(Base, Form):
             getOpenFileName(self, "Open Data File exel/csv",
                             filter="Standard(*.xlsx *.csv *.txt);; Tabel Files (*.xlsx *.csv);; All Files (*.*)")[0]
         try:
-            if path.endswith(".txt"):
-                shutil.copy(path, os.path.dirname(os.path.abspath(__file__)))
-            else:
-                readFromFile(path)
+            self.times = readFromFile(path)
         except Exception as e:
             print(e)
             print("wrong file")
