@@ -267,13 +267,23 @@ color: rgb(255, 255, 255);</string>
      <height>24</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: transparent;
+color: rgb(255, 255, 255);</string>
+   </property>
    <widget class="QMenu" name="menuFile">
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="title">
      <string>File</string>
     </property>
     <addaction name="actionOpen"/>
    </widget>
    <widget class="QMenu" name="menuinfo">
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
     <property name="title">
      <string>Projekt</string>
     </property>
@@ -285,15 +295,15 @@ color: rgb(255, 255, 255);</string>
    <addaction name="menuinfo"/>
   </widget>
   <action name="actionDocu">
-    <property name="text">
-        <string>Doku</string>
-    </property>
+   <property name="text">
+    <string>Doku</string>
+   </property>
   </action>
   <action name="actionSettings">
-    <property name="text">
-        <string>Abstand</string>
-    </property>
-  </action>  
+   <property name="text">
+    <string>Abstand</string>
+   </property>
+  </action>
   <action name="actionOpen">
    <property name="text">
     <string>Open</string>
@@ -305,6 +315,11 @@ color: rgb(255, 255, 255);</string>
   <action name="actionProjektinformationen">
    <property name="text">
     <string>Projektinformationen</string>
+   </property>
+   <property name="font">
+    <font>
+     <kerning>true</kerning>
+    </font>
    </property>
   </action>
   <action name="actionProjekt">
