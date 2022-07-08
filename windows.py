@@ -37,14 +37,41 @@ class Settings(QWidget):
             pass
 
 
+content = r"""//==================================\\
+||           ||   ||\\ //||    ||..\\    ||..\\     ||    ||\\ ||    NNN           ||
+||           ||   ||  \/  ||    ||        || \\      ||    || \\||       ||              ||
+\\==================================//
+
+  BSZ-ET Dresden
+  Strehlener Platz 2, 01219 Dresden Germany 
+  E-Mail:      bgy@bszet.de
+  Phone:      0351-4735-201
+  Principal:  Herr Bernd Petschke
+
+  Class: IG21 
+  Team members:
+      - Christoph Trischler 
+          E-Mail:  t21trischlerch@bszetdd.lernsax.de
+      - Konstantin Pfeil
+          E-Mail:  t21pfeilko@bszetdd.lernsax.de
+      - Karl Felix Wendt
+          E-Mail:  t21wendtka@bszetdd.lernsax.de
+      - Juius Weissleder
+          E-Mail:  t21weisslederju@bszetdd.lernsax.de
+  working period:
+      June 28, 2022 - July 15, 2022
+  school subjects:
+      - IT systems 
+      - physics """
+
+
 def showInprint(parent):
     window = QWidget()
     parent.inprint = window
-    window.setFixedSize(450, 360)
+    window.setFixedSize(300, 435)
     window.setWindowTitle("Impressum")
     window.content = QLabel(window)
-    window.content.resize(450, 360)
-    with open("imprint.txt", "r") as f:
-        window.content.setText(f.read())
+    window.content.resize(300, 435)
+    window.content.setText(content)
     window.content.show()
     window.show()

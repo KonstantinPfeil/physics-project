@@ -13,17 +13,16 @@ from PySide6.QtCore import QUrl
 from PySide6 import QtWidgets
 from PySide6.QtWidgets import QWidget
 from PySide6.QtGui import QPainter, QShortcut, QKeySequence, QDesktopServices
-from PySide6.QtUiTools import loadUiType
-from PySide6.QtWidgets import QFileDialog
+from PySide6.QtWidgets import QFileDialog, QMainWindow
 
 from auslesen import readFromFile
 from chart import Chart, SplineSeries, ScatterSeries
 from diagram import calculate
 from windows import Settings, showInprint
+from form import Ui_MainWindow
 
-UIFilename = "form.ui"
+
 ProjectDir = os.path.dirname(os.path.abspath(__file__))
-Form, Base = loadUiType(os.path.join(ProjectDir, UIFilename))
 
 
 def visibility(vis: bool, *widgets: QWidget):
@@ -31,7 +30,7 @@ def visibility(vis: bool, *widgets: QWidget):
         w.setVisible(vis)
 
 
-class MainWindow(Base, Form):
+class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(self.__class__, self).__init__(parent)
         self.distance: float = 0.2
