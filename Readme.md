@@ -1,6 +1,10 @@
- # Download
-You can find the build for Windows of our Project under "dist/PhysicsProject.exe".
+# Download
+You can find all needed Files in build.zip
 
 # Build
-To build this Project you need the package "pyinstaller" installed.
-Then you can run "pyinstaller PhysicsProject.spec" 
+To build this Project you need the package cx_freeze.
+Then you can run "py setup.py build". The result will be located in /build.  
+
+# Build form.py from form.ui
+When you changed something in the form.ui, you need to build the form.py new.
+You can do that with "pyside6-uic form.ui -o form.py".
