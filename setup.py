@@ -1,6 +1,6 @@
 from cx_Freeze import setup, Executable
 
-include_files = []
+include_files = ["example-data/"]
 
 shortcut_table = [
     ("DesktopShortcut",  # Shortcut
@@ -50,8 +50,10 @@ executables = [
     Executable('mainwindow.py', base="Win32GUI", target_name='physics-project')
 ]
 
-setup(name='physics-project',
-      version='1.0',
-      description='',
-      options={'build_exe': build_options},
-      executables=executables)
+setup(
+    name='physics-project',
+    version='1.0',
+    description='',
+    options={'build_exe': build_options},
+    executables=executables
+)
