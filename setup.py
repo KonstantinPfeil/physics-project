@@ -35,8 +35,8 @@ shortcut_table = [
 msi_data = {"Shortcut": shortcut_table}
 
 build_options = {
-    'packages': ["PySide6", "pandas", "openpyxl", "cx_Freeze", "matplotlib", "numpy"],
-    'excludes': ["email"],
+    'packages': ["PySide6", "pandas", "openpyxl", "numpy"],
+    'excludes': ["email", "matplotlib", "cx_freeze"],
     "include_files": include_files
 }
 
