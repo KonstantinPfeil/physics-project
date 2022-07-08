@@ -5,7 +5,6 @@
 # Copyright © 2022 by SRE
 
 import os
-import shutil
 import sys
 
 from PySide6 import QtCore as Core
@@ -15,11 +14,10 @@ from PySide6.QtWidgets import QWidget
 from PySide6.QtGui import QPainter, QShortcut, QKeySequence, QDesktopServices
 from PySide6.QtWidgets import QFileDialog, QMainWindow
 
-from auslesen import readFromFile
-from chart import Chart, SplineSeries, ScatterSeries
-from diagram import calculate
-from windows import Settings, showInprint
-from form import Ui_MainWindow
+from calculations import readFromFile, calculate
+from widgets.chart import Chart, SplineSeries, ScatterSeries
+from widgets.windows import Settings, showInprint
+from widgets.form import Ui_MainWindow
 
 
 ProjectDir = os.path.dirname(os.path.abspath(__file__))

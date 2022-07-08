@@ -1,8 +1,29 @@
-import os
-import json
+import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from typing import List, Optional
+
+
+def readFromFile(path: str):
+    times = []
+    if path.__contains__(".xlsx"): # check if it is a exel file
+        file = pd.read_excel(path)  # read from exel
+    else:
+        file = pd.read_csv(path, header=0, sep=";") # read from csv
+    magnetData = pd.DataFrame(file, columns=["locationHeadingZ", "locationHeadingTimestamp_since1970"]).to_numpy()
+    # gebrauchte colums entnehmen
+    start = magnetData[0][1]  # start timestamp lesen
+    magnetData = [(m, t - start) for m, t in magnetData]  # Datenvereinfachen
+    positive = False  # startet mit Negativenmagneten
+    for x, (value, time) in enumerate(magnetData):
+        if x in range(5, len(magnetData)-5):
+            Values = [t for m, t in magnetData[x-5:x+5]]  # vorherige und nachkommende Elemente in der Liste
+            if positive and value > 500 and value >= max(Values) or \
+                    not positive and value < -500 and value <= min(Values):
+                # erkennung von Spitzen
+                times.append(time)  # hinzufügen der Zeit
+                positive = not positive # umkehren des Vorzeichen
+    return times
 
 
 def calculate(distance: float, times: List[float]):
@@ -51,9 +72,10 @@ def scatter(name: str, x, y, c: Optional[str] = None, size: Optional[int] = None
 
 
 if __name__ == "__main__":
-    calculation = calculate(0.2)
+    ts = readFromFile(input("Filename"))
+    calculation = calculate(0.2, ts)
     if calculation is not None:
-        t, s, v, a, ps, pv, aa = calculation
+        t, s, v, a, ps, pv, aa, paras_s, paras_v, paras_a = calculation
         scatter("t in s-s in m", t, s)
         scatter("t in s-s in m", t, ps, "red", 5)
         plt.show()

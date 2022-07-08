@@ -1,7 +1,8 @@
 env/
 .idea/
 __pycache__/
-/mtimes.txt
 /physics-project.pyproject.user
 build/
-/mainwindow.spec
+/physics-project.pyproject
+/physics-project.pyproject.user.85d7c36
+.DS_Store/
