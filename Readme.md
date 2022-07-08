@@ -1,5 +1,5 @@
 # Download
-You can find all needed Files in build.zip
+You can find all needed Files in builds/build.zip
 
 # Build
 To build this Project you need the package cx_freeze.
