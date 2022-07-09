@@ -1,5 +1,4 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
 from typing import List, Optional
 
@@ -72,6 +71,8 @@ def scatter(name: str, x, y, c: Optional[str] = None, size: Optional[int] = None
 
 
 if __name__ == "__main__":
+    import matplotlib.pyplot as plt
+    
     ts = readFromFile(input("Filename"))
     calculation = calculate(0.2, ts)
     if calculation is not None:
