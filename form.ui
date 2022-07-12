@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>physics project</string>
+   <string>Auswertung beschleunigte Bewegung</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:qlineargradient(spread:pad, x1:0.84, y1:1, x2:1, y2:0, stop:0 rgba(38, 41, 46, 100), stop:1 rgba(86, 93, 103, 1));</string>
@@ -91,7 +91,7 @@ border-radius: 10px;</string>
 color: rgb(187, 178, 233);</string>
     </property>
     <property name="text">
-     <string>Auswertung gleichförmige Bewegung</string>
+     <string>Auswertung beschleunigte Bewegung</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>

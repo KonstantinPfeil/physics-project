@@ -145,7 +145,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"physics project", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Auswertung beschleunigte Bewegung", None))
         self.actionDocu.setText(QCoreApplication.translate("MainWindow", u"Doku", None))
         self.actionSettings.setText(QCoreApplication.translate("MainWindow", u"Abstand", None))
         self.actionOpen.setText(QCoreApplication.translate("MainWindow", u"Open", None))
@@ -155,7 +155,7 @@ class Ui_MainWindow(object):
         self.actionProjektinformationen.setText(QCoreApplication.translate("MainWindow", u"Projektinformationen", None))
         self.actionProjekt.setText(QCoreApplication.translate("MainWindow", u"Impressum", None))
         self.actioninfo_Website.setText(QCoreApplication.translate("MainWindow", u"info-Website", None))
-        self.lbl_Title.setText(QCoreApplication.translate("MainWindow", u"Auswertung gleichf\u00f6rmige Bewegung", None))
+        self.lbl_Title.setText(QCoreApplication.translate("MainWindow", u"Auswertung beschleunigte Bewegung", None))
         self.checkBox_1.setText(QCoreApplication.translate("MainWindow", u"Diagramm s-t", None))
         self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"Diagramm v-t", None))
         self.checkBox_3.setText(QCoreApplication.translate("MainWindow", u"Diagramm a-t", None))

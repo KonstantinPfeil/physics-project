@@ -36,8 +36,8 @@ msi_data = {"Shortcut": shortcut_table}
 
 build_options = {
     'packages': ["PySide6", "pandas", "openpyxl", "numpy"],
-    'excludes': ["email", "matplotlib", "cx_freeze"],
-    "include_files": include_files
+    'excludes': ["email", "matplotlib", "cx_freeze", "tkinter", "sqlite3", "html", "http", "test", "unittest"],
+    "include_files": include_files,
 }
 
 bdist_msi_options = {
@@ -47,7 +47,7 @@ bdist_msi_options = {
     }
 
 executables = [
-    Executable('mainwindow.py', base="Win32GUI", target_name='physics-project')
+    Executable('mainwindow.py', base="Win32GUI", target_name='Auswertung-beschleunigte-Bewegung')
 ]
 
 setup(

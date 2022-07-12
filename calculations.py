@@ -5,10 +5,10 @@ from typing import List, Optional
 
 def readFromFile(path: str):
     times = []
-    if path.__contains__(".xlsx"): # check if it is a exel file
+    if path.__contains__(".xlsx"):  # check if it is a exel file
         file = pd.read_excel(path)  # read from exel
     else:
-        file = pd.read_csv(path, header=0, sep=";") # read from csv
+        file = pd.read_csv(path, header=0, sep=";")  # read from csv
     magnetData = pd.DataFrame(file, columns=["locationHeadingZ", "locationHeadingTimestamp_since1970"]).to_numpy()
     # gebrauchte colums entnehmen
     start = magnetData[0][1]  # start timestamp lesen
